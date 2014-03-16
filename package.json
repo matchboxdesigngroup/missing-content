@@ -1,0 +1,26 @@
+{
+  "name": "mdg-base",
+  "version": "0.0.1",
+  "description": "Matchbox Design Group starter WordPress theme.",
+  "main": "base.php",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": "https://github.com/matchboxdesigngroup/mdg-base.git",
+  "author": "Matchbox Design Group",
+  "license": "GPLv2",
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-sass": "x.x.x",
+    "grunt-contrib-watch": "x.x.x",
+    "grunt-notify": "x.x.x",
+    "load-grunt-tasks": "x.x.x",
+    "grunt-scss-lint": "x.x.x",
+    "load-grunt-config": "x.x.x",
+    "grunt-concurrent": "x.x.x",
+    "time-grunt": "x.x.x",
+    "grunt-autoprefixer": "x.x.x",
+    "grunt-group-css-media-queries": "x.x.x",
+    "grunt-contrib-cssmin": "x.x.x"
+  }
+}
