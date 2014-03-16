@@ -1,6 +1,6 @@
 <?php
 /**
- * Missing Content ShortCode
+ *  Missing Content Notice
  *
  * @version      1.0.0
  * @package      WordPress
@@ -14,7 +14,7 @@
 
 /*
 Plugin Name:  Missing Content Notice
-Description:  Adds a ShortCode for when there is missing content, useful for development purposes.
+Description:  Adds a missing content notice for when there is missing content, useful for development purposes.
 Plugin URI:   http://#
 Author:       dholloran
 Author URI:   http://danholloran.me
@@ -488,7 +488,7 @@ function mcn_get_placeholder_content( $shortcode_atts ) {
  * @return  void
  */
 function mcn_enqueue_scripts_and_styles() {
-	wp_enqueue_style( 'mcn_main_css', MCN_URL . '/assets/css/mcs-plugin.min.css', array(), MCN_VERSION, 'screen' );
+	wp_enqueue_style( 'mcn_main_css', MCN_URL . '/assets/css/mcn-plugin.min.css', array(), MCN_VERSION, 'screen' );
 } // mcn_enqueue_scripts_and_styles()
 add_action( 'wp_head', 'mcn_enqueue_scripts_and_styles' );
 

@@ -1,4 +1,4 @@
 module.exports =
 	plugin:
-		src: "assets/css/mcs-plugin.min.css"
-		dest: "assets/css/mcs-plugin.min.css"
+		src: "assets/css/mcn-plugin.min.css"
+		dest: "assets/css/mcn-plugin.min.css"
