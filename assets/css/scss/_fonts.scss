@@ -7,7 +7,10 @@ $blokk-font: '../fonts/BLOKKNeue-Regular/BLOKKNeue-Regular';
 	font-family: 'BLOKKNeue-Regular';
 	src: url('#{$blokk-font}.eot');                                    // IE9 Compatibility Modes
 	src: url('#{$blokk-font}.eot?#iefix') format('embedded-opentype'), // IE6-IE8
-			 url('#{$blokk-font}.woff') format('woff'),                    // Modern Browsers
-			 url('#{$blokk-font}.ttf')  format('truetype'),                // Safari, Android, iOS
-			 url('#{$blokk-font}.svg#svgFontName') format('svg');          // Legacy iOS
+			 // Modern Browsers
+			 url('#{$blokk-font}.woff') format('woff'),
+			 // Safari, Android, iOS
+			 url('#{$blokk-font}.ttf')  format('truetype'),
+			 // Legacy iOS
+			 url('#{$blokk-font}.svg#svgFontName') format('svg');
 }
