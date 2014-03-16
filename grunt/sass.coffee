@@ -7,7 +7,20 @@ module.exports =
     files: [
       expand: true
       cwd: "assets/css/scss/"
-      src: ["mcs-plugin.scss"]
+      src: ["mcn-plugin.scss"]
+      dest: "assets/css/"
+      ext: ".min.css"
+    ]
+
+  dist:
+    options:
+      style: "expanded"
+      sourcemap: false
+
+    files: [
+      expand: true
+      cwd: "assets/css/scss/"
+      src: ["mcn-plugin.scss"]
       dest: "assets/css/"
       ext: ".min.css"
     ]
