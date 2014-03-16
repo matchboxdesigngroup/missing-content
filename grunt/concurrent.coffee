@@ -5,5 +5,4 @@ module.exports =
 
 	second: [
 		"copy"
-		"scsslint"
 	]
