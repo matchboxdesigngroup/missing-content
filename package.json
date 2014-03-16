@@ -1,12 +1,12 @@
 {
-  "name": "mdg-base",
-  "version": "0.0.1",
-  "description": "Matchbox Design Group starter WordPress theme.",
-  "main": "base.php",
+  "name": "mcs-content-notice",
+  "version": "1.0.0",
+  "description": "Adds a missing content notice for when there is missing content, useful for development purposes.",
+  "main": "missing-content-notice.php",
   "scripts": {
     "test": "test"
   },
-  "repository": "https://github.com/matchboxdesigngroup/mdg-base.git",
+  "repository": "",
   "author": "Matchbox Design Group",
   "license": "GPLv2",
   "devDependencies": {
@@ -15,12 +15,15 @@
     "grunt-contrib-watch": "x.x.x",
     "grunt-notify": "x.x.x",
     "load-grunt-tasks": "x.x.x",
-    "grunt-scss-lint": "x.x.x",
     "load-grunt-config": "x.x.x",
     "grunt-concurrent": "x.x.x",
     "time-grunt": "x.x.x",
     "grunt-autoprefixer": "x.x.x",
     "grunt-group-css-media-queries": "x.x.x",
-    "grunt-contrib-cssmin": "x.x.x"
+    "grunt-contrib-cssmin": "x.x.x",
+    "grunt-contrib-csslint": "~0.2.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.7.0"
   }
 }

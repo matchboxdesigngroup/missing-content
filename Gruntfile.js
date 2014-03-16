@@ -23,5 +23,17 @@ module.exports = function(grunt) {
 	// Register Tasks
 	grunt.registerTask('default', [ 'watch' ]);
 	grunt.registerTask('conflict', [ 'sass:plugin' ]);
-	grunt.registerTask('build', [ 'sass', 'autoprefixer', 'group_css_media_queries', 'cssmin', 'phpdoc' ]);
+
+	grunt.registerTask('dist', [
+		'sass:dist',
+		'autoprefixer',
+		'group_css_media_queries',
+		'csslint',
+		'cssmin',
+		'phpdoc',
+		'clean:dist',
+		'copy',
+		'compress',
+		'clean:zip'
+	]);
 };
