@@ -68,7 +68,7 @@ define( MCN_URL, plugins_url( '/missing-content-notice' ) );
 define( 'MCN_PATH', plugin_dir_path( __FILE__ ) );
 
 // Debugging
-require_once 'mcn-debug.php';
+require_once 'includes/mcn-debug.php';
 
 
 /**
