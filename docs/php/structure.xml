@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="API Documentation" version="2.2.0&#10;">
+  <partials/>
+  <file path="missing-content-notice.php" generated-path="missing-content-notice.html" hash="07ce01f12cce42f67d32fa18c6938e5d" package="WordPress">
+    <docblock line="0">
+      <description>Missing Content ShortCode</description>
+      <long-description></long-description>
+      <tag name="version" line="0" description="1.0.0"/>
+      <tag name="package" line="0" description="WordPress"/>
+      <tag name="subpackage" line="0" description="MCN"/>
+      <tag name="author" line="0" description="Matchbox Design Group" link="mailto:info@matchboxdesigngroup.com"/>
+      <tag name="author" line="0" description="Dan Holloran" link="mailto:dholloran@matchboxdesigngroup.com"/>
+      <tag name="copyright" line="0" description="2014 - Present         Matchbox Design Group"/>
+    </docblock>
+    <constant namespace="" line="54" package="WordPress">
+      <name>MCN_VERSION</name>
+      <full_name>\\MCN_VERSION</full_name>
+      <value>'1.0.0'</value>
+      <docblock line="54">
+        <description>Missing Content Notice version number.</description>
+        <long-description></long-description>
+        <tag name="var" line="54" description="" type="string" variable="">
+          <type>string</type>
+        </tag>
+      </docblock>
+    </constant>
+    <constant namespace="" line="61" package="WordPress">
+      <name>MCN_URL</name>
+      <full_name>\\MCN_URL</full_name>
+      <value>plugins_url('/missing-content-notice')</value>
+      <docblock line="61">
+        <description>Missing Content Notice plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).</description>
+        <long-description></long-description>
+        <tag name="var" line="61" description="" type="string" variable="">
+          <type>string</type>
+        </tag>
+      </docblock>
+    </constant>
+    <constant namespace="" line="68" package="WordPress">
+      <name>MCN_PATH</name>
+      <full_name>\\MCN_PATH</full_name>
+      <value>plugin_dir_path(__FILE__)</value>
+      <docblock line="68">
+        <description>Missing Content Notice plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).</description>
+        <long-description></long-description>
+        <tag name="var" line="68" description="" type="string" variable="">
+          <type>string</type>
+        </tag>
+      </docblock>
+    </constant>
+    <function namespace="" line="88" package="WordPress">
+      <name>mcn_get_cached_http_response_transient_key</name>
+      <full_name>\mcn_get_cached_http_response_transient_key()</full_name>
+      <docblock line="88">
+        <description>Retrieves the transient key for the HTTP response cache.</description>
+        <long-description>Uses MD5 to create a transient key from the ShortCode attributes.
+
+&lt;code&gt;$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );&lt;/code&gt;</long-description>
+        <tag name="see" line="88" description="" link="\https://codex.wordpress.org/Transients_API"/>
+        <tag name="since" line="88" description="1.0.0"/>
+        <tag name="param" line="88" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="return" line="88" description="The transient key." type="\return">
+          <type link="return.html">\return</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <function namespace="" line="114" package="WordPress">
+      <name>mcn_cache_http_response</name>
+      <full_name>\mcn_cache_http_response()</full_name>
+      <docblock line="114">
+        <description>Caches the HTTP response content.</description>
+        <long-description>Will use mcn_cache_http_response_multisite() if it is a Multisite installation.
+
+&lt;code&gt;mcn_cache_http_response( $response, $shortcode_atts );&lt;/code&gt;</long-description>
+        <tag name="see" line="114" description="" link="\https://codex.wordpress.org/Function_Reference/set_transient"/>
+        <tag name="uses" line="114" description="" link="mcn_get_cached_http_response_transient_key()"/>
+        <tag name="since" line="114" description="1.0.0"/>
+        <tag name="param" line="114" description="&lt;p&gt;The response to cache from the HTTP request.&lt;/p&gt;" type="mixed" variable="$response">
+          <type>mixed</type>
+        </tag>
+        <tag name="param" line="114" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="return" line="114" description="" type="void">
+          <type>void</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$response</name>
+        <default></default>
+        <type>mixed</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <function namespace="" line="145" package="WordPress">
+      <name>mcn_cache_http_response_multisite</name>
+      <full_name>\mcn_cache_http_response_multisite()</full_name>
+      <docblock line="145">
+        <description>Caches the HTTP response content, used on WordPress MultiSite installs.</description>
+        <long-description>&lt;code&gt;mcn_cache_http_response_multisite( $response, $shortcode_atts );&lt;/code&gt;</long-description>
+        <tag name="see" line="145" description="" link="\https://codex.wordpress.org/Function_Reference/set_site_transient"/>
+        <tag name="uses" line="145" description="" link="mcn_get_cached_http_response_transient_key()"/>
+        <tag name="since" line="145" description="1.0.0"/>
+        <tag name="param" line="145" description="&lt;p&gt;The response to cache from the HTTP request.&lt;/p&gt;" type="mixed" variable="$response">
+          <type>mixed</type>
+        </tag>
+        <tag name="param" line="145" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="return" line="145" description="" type="void">
+          <type>void</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$response</name>
+        <default></default>
+        <type>mixed</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <function namespace="" line="172" package="WordPress">
+      <name>mcn_get_cached_http_response</name>
+      <full_name>\mcn_get_cached_http_response()</full_name>
+      <docblock line="172">
+        <description>Retrieves the cached HTTP response if it exists.</description>
+        <long-description>Will use mcn_get_cached_http_response_multisite() if it is a Multisite installation.
+
+&lt;code&gt;$cache = mcn_get_cached_http_response( $shortcode_atts );&lt;/code&gt;</long-description>
+        <tag name="see" line="172" description="" link="\https://codex.wordpress.org/Function_Reference/get_transient"/>
+        <tag name="uses" line="172" description="" link="mcn_get_cached_http_response_transient_key()"/>
+        <tag name="since" line="172" description="1.0.0"/>
+        <tag name="param" line="172" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="return" line="172" description="The cached content if it exists or false if it does not." type="mixed">
+          <type>mixed</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <function namespace="" line="204" package="WordPress">
+      <name>mcn_get_cached_http_response_multisite</name>
+      <full_name>\mcn_get_cached_http_response_multisite()</full_name>
+      <docblock line="204">
+        <description>Retrieves the cached HTTP response if it exists, used on WordPress MultiSite installs.</description>
+        <long-description>&lt;code&gt;$cache = mcn_get_cached_http_response_multisite( $shortcode_atts );&lt;/code&gt;</long-description>
+        <tag name="see" line="204" description="" link="\https://codex.wordpress.org/Function_Reference/get_site_transient"/>
+        <tag name="uses" line="204" description="" link="mcn_get_cached_http_response_transient_key()"/>
+        <tag name="since" line="204" description="1.0.0"/>
+        <tag name="param" line="204" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="return" line="204" description="The cached content if it exists or false if it does not." type="mixed">
+          <type>mixed</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <function namespace="" line="228" package="WordPress">
+      <name>mcn_fallback_ipsum</name>
+      <full_name>\mcn_fallback_ipsum()</full_name>
+      <docblock line="228">
+        <description>If selected API fails this will be used as a fall back placeholder content.</description>
+        <long-description>&lt;code&gt;$content = mcn_fallback_ipsum( $paragraph_count );&lt;/code&gt;</long-description>
+        <tag name="since" line="228" description="1.0.0"/>
+        <tag name="param" line="228" description="&lt;p&gt;Should the text be wrapped in paragraph tags or divided by newlines.&lt;/p&gt;" type="boolean" variable="$html">
+          <type>boolean</type>
+        </tag>
+        <tag name="return" line="228" description="The fall back ipsum." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$html</name>
+        <default>true</default>
+        <type>boolean</type>
+      </argument>
+    </function>
+    <function namespace="" line="267" package="WordPress">
+      <name>mcn_get_lipsum</name>
+      <full_name>\mcn_get_lipsum()</full_name>
+      <docblock line="267">
+        <description>Retrieve Loreum Ipsum (API Response:HTML/Plain Text)</description>
+        <long-description>&lt;code&gt;$content = mcn_get_lipsum( $shortcode_atts, $paragraph_count );&lt;/code&gt;</long-description>
+        <tag name="see" line="267" description="" link="\http://loripsum.net/"/>
+        <tag name="uses" line="267" description="" link="mcn_get_cached_http_response()"/>
+        <tag name="uses" line="267" description="" link="mcn_cache_http_response()"/>
+        <tag name="since" line="267" description="1.0.0"/>
+        <tag name="param" line="267" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="param" line="267" description="&lt;p&gt;The count of paragraphs to retrieve.&lt;/p&gt;" type="integer" variable="$paragraph_count">
+          <type>integer</type>
+        </tag>
+        <tag name="param" line="267" description="&lt;p&gt;Should the text be wrapped in paragraph tags or divided by newlines.&lt;/p&gt;" type="boolean" variable="$html">
+          <type>boolean</type>
+        </tag>
+        <tag name="return" line="267" description="The lipsum content." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$paragraph_count</name>
+        <default>3</default>
+        <type>integer</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$html</name>
+        <default>true</default>
+        <type>boolean</type>
+      </argument>
+    </function>
+    <function namespace="" line="307" package="WordPress">
+      <name>mcn_get_bacon_ipsum</name>
+      <full_name>\mcn_get_bacon_ipsum()</full_name>
+      <docblock line="307">
+        <description>Retrieves Bacon Ipsum (API Response:JSON).</description>
+        <long-description>&lt;code&gt;$content = mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count );&lt;/code&gt;</long-description>
+        <tag name="see" line="307" description="" link="\http://baconipsum.com/api/"/>
+        <tag name="uses" line="307" description="" link="mcn_get_cached_http_response()"/>
+        <tag name="uses" line="307" description="" link="mcn_cache_http_response()"/>
+        <tag name="since" line="307" description="1.0.0"/>
+        <tag name="param" line="307" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="param" line="307" description="&lt;p&gt;The count of paragraphs to retrieve.&lt;/p&gt;" type="integer" variable="$paragraph_count">
+          <type>integer</type>
+        </tag>
+        <tag name="param" line="307" description="&lt;p&gt;Should the text be wrapped in paragraph tags or divided by newlines.&lt;/p&gt;" type="boolean" variable="$html">
+          <type>boolean</type>
+        </tag>
+        <tag name="return" line="307" description="The bacon ipsum content." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$paragraph_count</name>
+        <default>3</default>
+        <type>integer</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$html</name>
+        <default>true</default>
+        <type>boolean</type>
+      </argument>
+    </function>
+    <function namespace="" line="353" package="WordPress">
+      <name>mcn_get_hipster_ipsum</name>
+      <full_name>\mcn_get_hipster_ipsum()</full_name>
+      <docblock line="353">
+        <description>Retrieves Hipster Ipsum (API Response:JSON).</description>
+        <long-description>&lt;code&gt;$content = mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count );&lt;/code&gt;</long-description>
+        <tag name="see" line="353" description="" link="\http://hipsterjesus.com/"/>
+        <tag name="uses" line="353" description="" link="mcn_get_cached_http_response()"/>
+        <tag name="uses" line="353" description="" link="mcn_cache_http_response()"/>
+        <tag name="since" line="353" description="1.0.0"/>
+        <tag name="param" line="353" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="param" line="353" description="&lt;p&gt;The count of paragraphs to retrieve.&lt;/p&gt;" type="integer" variable="$paragraph_count">
+          <type>integer</type>
+        </tag>
+        <tag name="param" line="353" description="&lt;p&gt;Should the text be wrapped in paragraph tags or divided by newlines.&lt;/p&gt;" type="boolean" variable="$html">
+          <type>boolean</type>
+        </tag>
+        <tag name="return" line="353" description="The bacon ipsum content." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$paragraph_count</name>
+        <default>3</default>
+        <type>integer</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$html</name>
+        <default>true</default>
+        <type>boolean</type>
+      </argument>
+    </function>
+    <function namespace="" line="396" package="WordPress">
+      <name>mcn_blokk_font</name>
+      <full_name>\mcn_blokk_font()</full_name>
+      <docblock line="396">
+        <description>Blokk font placeholder font.</description>
+        <long-description>&lt;code&gt;$content = mcn_blokk_font( $shortcode_atts, $paragraph_count );&lt;/code&gt;</long-description>
+        <tag name="see" line="396" description="" link="\http://blokkfont.com/"/>
+        <tag name="uses" line="396" description="" link="mcn_get_lipsum()"/>
+        <tag name="since" line="396" description="1.0.0"/>
+        <tag name="param" line="396" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="param" line="396" description="&lt;p&gt;The count of paragraphs to retrieve.&lt;/p&gt;" type="integer" variable="$paragraph_count">
+          <type>integer</type>
+        </tag>
+        <tag name="return" line="396" description="The Blokk font content." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$paragraph_count</name>
+        <default>3</default>
+        <type>integer</type>
+      </argument>
+    </function>
+    <function namespace="" line="423" package="WordPress">
+      <name>mcn_placeholder_image</name>
+      <full_name>\mcn_placeholder_image()</full_name>
+      <docblock line="423">
+        <description>Placeholder image.</description>
+        <long-description>&lt;code&gt;$placeholder_image = mcn_placeholder_image( $width, $height );&lt;/code&gt;</long-description>
+        <tag name="see" line="423" description="" link="\http://placehold.it"/>
+        <tag name="since" line="423" description="1.0.0"/>
+        <tag name="param" line="423" description="&lt;p&gt;Image width.&lt;/p&gt;" type="integer" variable="$width">
+          <type>integer</type>
+        </tag>
+        <tag name="param" line="423" description="&lt;p&gt;Image height.&lt;/p&gt;" type="integer" variable="$height">
+          <type>integer</type>
+        </tag>
+        <tag name="return" line="423" description="Missing image HTML." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$width</name>
+        <default>150</default>
+        <type>integer</type>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$height</name>
+        <default>150</default>
+        <type>integer</type>
+      </argument>
+    </function>
+    <function namespace="" line="448" package="WordPress">
+      <name>mcn_get_placeholder_content</name>
+      <full_name>\mcn_get_placeholder_content()</full_name>
+      <docblock line="448">
+        <description>Retrieves the correct placeholder content.</description>
+        <long-description></long-description>
+        <tag name="since" line="448" description="1.0.0"/>
+        <tag name="param" line="448" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;&#10;&lt;code&gt;$placeholder_content = mcn_get_placeholder_content( $atts );&lt;/code&gt;" type="array" variable="$shortcode_atts">
+          <type>array</type>
+        </tag>
+        <tag name="uses" line="448" description="" link="mcn_get_hipster_ipsum()"/>
+        <tag name="uses" line="448" description="" link="mcn_get_bacon_ipsum()"/>
+        <tag name="uses" line="448" description="" link="mcn_blokk_font()"/>
+        <tag name="uses" line="448" description="" link="mcn_placeholder_image()"/>
+        <tag name="uses" line="448" description="" link="mcn_get_lipsum()"/>
+        <tag name="return" line="448" description="The selected ipsum content." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$shortcode_atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <function namespace="" line="490" package="WordPress">
+      <name>mcn_enqueue_scripts_and_styles</name>
+      <full_name>\mcn_enqueue_scripts_and_styles()</full_name>
+      <docblock line="490">
+        <description>Adds Missing Content ShortCode scripts and styles.</description>
+        <long-description></long-description>
+        <tag name="since" line="490" description="1.0.0"/>
+        <tag name="return" line="490" description="" type="void">
+          <type>void</type>
+        </tag>
+      </docblock>
+    </function>
+    <function namespace="" line="510" package="WordPress">
+      <name>mcn_missing_content_shortcode</name>
+      <full_name>\mcn_missing_content_shortcode()</full_name>
+      <docblock line="510">
+        <description>Adds a missing content ShortCode.</description>
+        <long-description>&lt;code&gt;[missing-content ipsum_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]&lt;/code&gt;</long-description>
+        <tag name="uses" line="510" description="" link="mcn_get_placeholder_content()"/>
+        <tag name="since" line="510" description="1.0.0"/>
+        <tag name="param" line="510" description="&lt;p&gt;The ShortCodes attributes aka ShortCode options.&lt;/p&gt;" type="array" variable="$atts">
+          <type>array</type>
+        </tag>
+        <tag name="return" line="510" description="The missing content HTML." type="string">
+          <type>string</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$atts</name>
+        <default></default>
+        <type>array</type>
+      </argument>
+    </function>
+    <source>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</source>
+  </file>
+  <file path="mcn-debug.php" generated-path="mcn-debug.html" hash="9a3cefc5b0de3ec2a6a089cf00761804" package="WordPress">
+    <docblock line="0">
+      <description>Missing Content Notice debugging.</description>
+      <long-description></long-description>
+      <tag name="version" line="0" description="1.0.0"/>
+      <tag name="package" line="0" description="WordPress"/>
+      <tag name="subpackage" line="0" description="MCN_DEBUG"/>
+      <tag name="author" line="0" description="Matchbox Design Group" link="mailto:info@matchboxdesigngroup.com"/>
+      <tag name="author" line="0" description="Dan Holloran" link="mailto:dholloran@matchboxdesigngroup.com"/>
+      <tag name="copyright" line="0" description="2014 - Present         Matchbox Design Group"/>
+    </docblock>
+    <function namespace="" line="30" package="WordPress">
+      <name>mcn_debug_is_localhost</name>
+      <full_name>\mcn_debug_is_localhost()</full_name>
+      <docblock line="30">
+        <description>Checks if the current host is localhost, a VirtualBox VM, or sitename.dev vHost.</description>
+        <long-description>&lt;code&gt;
+if ( mcn_debug_is_localhost() ) {
+	do_something_related_to_localhost();
+} // if()
+&lt;/code&gt;</long-description>
+        <tag name="since" line="30" description="1.0.0"/>
+        <tag name="return" line="30" description="If the current host is localhost." type="boolean">
+          <type>boolean</type>
+        </tag>
+      </docblock>
+    </function>
+    <function namespace="" line="62" package="WordPress">
+      <name>pp</name>
+      <full_name>\pp()</full_name>
+      <docblock line="62">
+        <description>Pretty Print Debug Function</description>
+        <long-description>&lt;code&gt;pp( $something_to_pretty_print );&lt;/code&gt;</long-description>
+        <tag name="uses" line="62" description="" link="mcn_debug_is_localhost()"/>
+        <tag name="since" line="62" description="1.0.0"/>
+        <tag name="param" line="62" description="&lt;p&gt;Any value to pretty print.&lt;/p&gt;" type="mixed" variable="$value">
+          <type>mixed</type>
+        </tag>
+        <tag name="return" line="62" description="" type="Void">
+          <type>Void</type>
+        </tag>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$value</name>
+        <default></default>
+        <type>mixed</type>
+      </argument>
+    </function>
+    <source>eJyFU+9r2zAQ/Wz/FTcIOCmd3YTBYE1/rE3X7EO60nbZhzGEYiu2qC0ZSQ4JZf/7TpKdNBvp/MWW7u7d3XvP44u6qMPk6CiEI5hxrbnI4VoKw4SBO2l4yiBjiybPMRBjks27XDGluRTgnmF8Ep90kZqmzzRnPvJDquxeMa1dSDeLXXR2fUcmN1ffb7tC2phCKl8HM2rSYiHXMGGa5wJulWxqGHOxlJdVG8tcKLeROJXV+b8oEypgKstSKtqOap9xVrR3b0E5tFTWG8Xzwti60cnwA7wHu4/lBt4aFauTMOxovS5Y+qyBL8EUDNJGKQtQSG2AayhlSkt7OAYKc65MQ8srxJvPjgFX0RyloBWLM7aC1RTzOhXGqcyYWxuR+1ClgjilCNdkC9ofwABebFKQSaJlxUyBShLFSmpYRox8nXtqE39DkiBkf+CaJF0XryEXaIh9yRUzjRKwkLJkSPTX/6wZO3KWjUiNtdDBsV/CoLc9wxlQpeimHwZBtL2Nju1xOPpox4mH7dF+j+KRPeFCQc/Vu+cMaUKLM9OHHnm8eZjfPPyMpk9P92T67fEp+gWWrIsDsU8QRRYOx1x5yDPQRtVSI5rXL7IiRYBdw8BpwgXxY3cZrzYaWHV3aG7hoOXSqIZhr50SYRdZ0lJjyEUOUYfOC137d9DRTNiaa4OTRnUdgfdEYO0ZoIJoaWM2+OKo18QCwpe2zsZdjjdbXeMmOxOheWpXiy9bOzjt7NKVXTaaaWT+4KjbxD1nbW9rqmgFFV+zDFF6K1o2DD6LDfgvI8EPAG6AeFfY0jWXPLMXSRhsHeeW8PWe9LyUC1pCr8pykjPBFE+tgkHL4Zs/VtBphnLt6RWwtJAQjXG+c+sbj7bXN3BDE7W79iAMJfYJK6pI1lT13xmuTWLzLIVdq6Tr5RJwzUG4negPVKS7qw==</source>
+  </file>
+  <package name="WordPress" full_name="WordPress"/>
+  <namespace name="global" full_name="global"/>
+  <deprecated count="0"/>
+</project>
