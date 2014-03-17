@@ -14,9 +14,9 @@
 
 /*
 Plugin Name:  Missing Content
-Description:  Adds a missing content notice for when there is missing content, useful for development purposes.
-Plugin URI:   http://#
-Author:       dholloran
+Description:  Adds a missing content notice for when there is missing content.
+Plugin URI:   http://matchboxdesigngroup.github.io/missing-content
+Author:       Matchbox Design Group
 Author URI:   http://danholloran.me
 Version:      1.0.0
 License:      GPL2
@@ -58,7 +58,7 @@ define( 'MCN_VERSION', '1.0.0' );
  *
  * @var  string
  */
-define( MCN_URL, plugins_url( '/missing-content-notice' ) );
+define( 'MCN_URL', plugins_url( '/missing-content-notice' ) );
 
 /**
  * Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).
