@@ -1,0 +1,15 @@
+@import 'mixins';
+@import 'fonts';
+
+.mc-blokk { font-family: "BLOKKNeue-Regular", serif; }
+
+
+div.missing-content-notice-shortcode {
+	@include clearfix();
+	background: #fcf8e3;
+	border: 1px solid #faebcc;
+	box-sizing: border-box;
+	color: #8a6d3b;
+	padding: 10px;
+
+} // .missing-content-notice-shortcode

@@ -1,0 +1,585 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>API Documentation » WordPress</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">API Documentation</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu"></ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/WordPress.html" title="WordPress"><i class="icon-folder-open"></i>WordPress</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i title="Functions" class="icon-custom icon-function"></i> Functions</li>
+<li class="function  "><a href="#function_mcn_blokk_font" title="mcn_blokk_font() :: Blokk font placeholder font."><span class="description">Blokk font placeholder font.</span><pre>mcn_blokk_font</pre></a></li>
+<li class="function  "><a href="#function_mcn_cache_http_response" title="mcn_cache_http_response() :: Caches the HTTP response content."><span class="description">Caches the HTTP response content.</span><pre>mcn_cache_http_response</pre></a></li>
+<li class="function  "><a href="#function_mcn_cache_http_response_multisite" title="mcn_cache_http_response_multisite() :: Caches the HTTP response content, used on WordPress MultiSite installs."><span class="description">Caches the HTTP response content, used on WordPress MultiSite installs.</span><pre>mcn_cache_http_response_multisite</pre></a></li>
+<li class="function  "><a href="#function_mcn_debug_is_localhost" title="mcn_debug_is_localhost() :: Checks if the current host is localhost, a VirtualBox VM, or sitename.dev vHost."><span class="description">Checks if the current host is localhost, a VirtualBox VM, or sitename.dev vHost.</span><pre>mcn_debug_is_localhost</pre></a></li>
+<li class="function  "><a href="#function_mcn_enqueue_scripts_and_styles" title="mcn_enqueue_scripts_and_styles() :: Adds Missing Content ShortCode scripts and styles."><span class="description">Adds Missing Content ShortCode scripts and styles.</span><pre>mcn_enqueue_scripts_and_styles</pre></a></li>
+<li class="function  "><a href="#function_mcn_fallback_ipsum" title="mcn_fallback_ipsum() :: If selected API fails this will be used as a fall back placeholder content."><span class="description">If selected API fails this will be used as a fall back placeholder content.</span><pre>mcn_fallback_ipsum</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_bacon_ipsum" title="mcn_get_bacon_ipsum() :: Retrieves Bacon Ipsum (API Response:JSON)."><span class="description">Retrieves Bacon Ipsum (API Response:JSON).</span><pre>mcn_get_bacon_ipsum</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_cached_http_response" title="mcn_get_cached_http_response() :: Retrieves the cached HTTP response if it exists."><span class="description">Retrieves the cached HTTP response if it exists.</span><pre>mcn_get_cached_http_response</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_cached_http_response_multisite" title="mcn_get_cached_http_response_multisite() :: Retrieves the cached HTTP response if it exists, used on WordPress MultiSite installs."><span class="description">Retrieves the cached HTTP response if it exists, used on WordPress MultiSite installs.</span><pre>mcn_get_cached_http_response_multisite</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_cached_http_response_transient_key" title="mcn_get_cached_http_response_transient_key() :: Retrieves the transient key for the HTTP response cache."><span class="description">Retrieves the transient key for the HTTP response cache.</span><pre>mcn_get_cached_http_response_transient_key</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_hipster_ipsum" title="mcn_get_hipster_ipsum() :: Retrieves Hipster Ipsum (API Response:JSON)."><span class="description">Retrieves Hipster Ipsum (API Response:JSON).</span><pre>mcn_get_hipster_ipsum</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_lipsum" title="mcn_get_lipsum() :: Retrieve Loreum Ipsum (API Response:HTML/Plain Text)"><span class="description">Retrieve Loreum Ipsum (API Response:HTML/Plain Text)</span><pre>mcn_get_lipsum</pre></a></li>
+<li class="function  "><a href="#function_mcn_get_placeholder_content" title="mcn_get_placeholder_content() :: Retrieves the correct placeholder content."><span class="description">Retrieves the correct placeholder content.</span><pre>mcn_get_placeholder_content</pre></a></li>
+<li class="function  "><a href="#function_mcn_missing_content_shortcode" title="mcn_missing_content_shortcode() :: Adds a missing content ShortCode."><span class="description">Adds a missing content ShortCode.</span><pre>mcn_missing_content_shortcode</pre></a></li>
+<li class="function  "><a href="#function_mcn_placeholder_image" title="mcn_placeholder_image() :: Placeholder image."><span class="description">Placeholder image.</span><pre>mcn_placeholder_image</pre></a></li>
+<li class="function  "><a href="#function_pp" title="pp() :: Pretty Print Debug Function"><span class="description">Pretty Print Debug Function</span><pre>pp</pre></a></li>
+<li class="nav-header">
+<i title="Constants" class="icon-custom icon-constant"></i> Constants</li>
+<li class="constant  "><a href="#constant_MCN_PATH" title="MCN_PATH() :: Missing Content Notice plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/)."><span class="description">Missing Content Notice plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).</span><pre>MCN_PATH</pre></a></li>
+<li class="constant  "><a href="#constant_MCN_URL" title="MCN_URL() :: Missing Content Notice plugin URL without trailing slash (http://{plugins_url}/missing-content-notice)."><span class="description">Missing Content Notice plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).</span><pre>MCN_URL</pre></a></li>
+<li class="constant  "><a href="#constant_MCN_VERSION" title="MCN_VERSION() :: Missing Content Notice version number."><span class="description">Missing Content Notice version number.</span><pre>MCN_VERSION</pre></a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/WordPress.html">WordPress</a></li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i title="Functions" class="icon-custom icon-function"></i> Functions</h3>
+<a id="function_mcn_blokk_font"></a><div class="element clickable function  function_mcn_blokk_font" data-toggle="collapse" data-target=".function_mcn_blokk_font .collapse" title="">
+<h2>Blokk font placeholder font.</h2>
+<pre>mcn_blokk_font(array $shortcode_atts, integer $paragraph_count<code> = 3</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$content = mcn_blokk_font( $shortcode_atts, $paragraph_count );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttp://blokkfont.com/"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_lipsum()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<div class="subelement argument">
+<h4>$paragraph_count</h4>
+<code>integer</code><p>The count of paragraphs to retrieve.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The Blokk font content.</div>
+</div></div>
+</div>
+<a id="function_mcn_cache_http_response"></a><div class="element clickable function  function_mcn_cache_http_response" data-toggle="collapse" data-target=".function_mcn_cache_http_response .collapse" title="">
+<h2>Caches the HTTP response content.</h2>
+<pre>mcn_cache_http_response(mixed $response, array $shortcode_atts) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description">Will use mcn_cache_http_response_multisite() if it is a Multisite installation.
+
+<code>mcn_cache_http_response( $response, $shortcode_atts );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttps://codex.wordpress.org/Function_Reference/set_transient"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response_transient_key()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$response</h4>
+<code>mixed</code><p>The response to cache from the HTTP request.</p></div>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+</div></div>
+</div>
+<a id="function_mcn_cache_http_response_multisite"></a><div class="element clickable function  function_mcn_cache_http_response_multisite" data-toggle="collapse" data-target=".function_mcn_cache_http_response_multisite .collapse" title="">
+<h2>Caches the HTTP response content, used on WordPress MultiSite installs.</h2>
+<pre>mcn_cache_http_response_multisite(mixed $response, array $shortcode_atts) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>mcn_cache_http_response_multisite( $response, $shortcode_atts );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttps://codex.wordpress.org/Function_Reference/set_site_transient"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response_transient_key()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$response</h4>
+<code>mixed</code><p>The response to cache from the HTTP request.</p></div>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+</div></div>
+</div>
+<a id="function_mcn_debug_is_localhost"></a><div class="element clickable function  function_mcn_debug_is_localhost" data-toggle="collapse" data-target=".function_mcn_debug_is_localhost .collapse" title="">
+<h2>Checks if the current host is localhost, a VirtualBox VM, or sitename.dev vHost.</h2>
+<pre>mcn_debug_is_localhost() : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>
+if ( mcn_debug_is_localhost() ) {
+	do_something_related_to_localhost();
+} // if()
+</code></div>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>If the current host is localhost.</div>
+</div></div>
+</div>
+<a id="function_mcn_enqueue_scripts_and_styles"></a><div class="element clickable function  function_mcn_enqueue_scripts_and_styles" data-toggle="collapse" data-target=".function_mcn_enqueue_scripts_and_styles .collapse" title="">
+<h2>Adds Missing Content ShortCode scripts and styles.</h2>
+<pre>mcn_enqueue_scripts_and_styles() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr></table>
+</div></div>
+</div>
+<a id="function_mcn_fallback_ipsum"></a><div class="element clickable function  function_mcn_fallback_ipsum" data-toggle="collapse" data-target=".function_mcn_fallback_ipsum .collapse" title="">
+<h2>If selected API fails this will be used as a fall back placeholder content.</h2>
+<pre>mcn_fallback_ipsum(boolean $html<code> = true</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$content = mcn_fallback_ipsum( $paragraph_count );</code></div>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>boolean</code><p>Should the text be wrapped in paragraph tags or divided by newlines.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The fall back ipsum.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_bacon_ipsum"></a><div class="element clickable function  function_mcn_get_bacon_ipsum" data-toggle="collapse" data-target=".function_mcn_get_bacon_ipsum .collapse" title="">
+<h2>Retrieves Bacon Ipsum (API Response:JSON).</h2>
+<pre>mcn_get_bacon_ipsum(array $shortcode_atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$content = mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttp://baconipsum.com/api/"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_cache_http_response()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<div class="subelement argument">
+<h4>$paragraph_count</h4>
+<code>integer</code><p>The count of paragraphs to retrieve.</p></div>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>boolean</code><p>Should the text be wrapped in paragraph tags or divided by newlines.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The bacon ipsum content.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_cached_http_response"></a><div class="element clickable function  function_mcn_get_cached_http_response" data-toggle="collapse" data-target=".function_mcn_get_cached_http_response .collapse" title="">
+<h2>Retrieves the cached HTTP response if it exists.</h2>
+<pre>mcn_get_cached_http_response(array $shortcode_atts) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description">Will use mcn_get_cached_http_response_multisite() if it is a Multisite installation.
+
+<code>$cache = mcn_get_cached_http_response( $shortcode_atts );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttps://codex.wordpress.org/Function_Reference/get_transient"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response_transient_key()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The cached content if it exists or false if it does not.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_cached_http_response_multisite"></a><div class="element clickable function  function_mcn_get_cached_http_response_multisite" data-toggle="collapse" data-target=".function_mcn_get_cached_http_response_multisite .collapse" title="">
+<h2>Retrieves the cached HTTP response if it exists, used on WordPress MultiSite installs.</h2>
+<pre>mcn_get_cached_http_response_multisite(array $shortcode_atts) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$cache = mcn_get_cached_http_response_multisite( $shortcode_atts );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttps://codex.wordpress.org/Function_Reference/get_site_transient"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response_transient_key()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The cached content if it exists or false if it does not.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_cached_http_response_transient_key"></a><div class="element clickable function  function_mcn_get_cached_http_response_transient_key" data-toggle="collapse" data-target=".function_mcn_get_cached_http_response_transient_key .collapse" title="">
+<h2>Retrieves the transient key for the HTTP response cache.</h2>
+<pre>mcn_get_cached_http_response_transient_key(array $shortcode_atts) : <a href="return.html">\return</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description">Uses MD5 to create a transient key from the ShortCode attributes.
+
+<code>$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttps://codex.wordpress.org/Transients_API"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="return.html">\return</a></code>The transient key.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_hipster_ipsum"></a><div class="element clickable function  function_mcn_get_hipster_ipsum" data-toggle="collapse" data-target=".function_mcn_get_hipster_ipsum .collapse" title="">
+<h2>Retrieves Hipster Ipsum (API Response:JSON).</h2>
+<pre>mcn_get_hipster_ipsum(array $shortcode_atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$content = mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttp://hipsterjesus.com/"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_cache_http_response()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<div class="subelement argument">
+<h4>$paragraph_count</h4>
+<code>integer</code><p>The count of paragraphs to retrieve.</p></div>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>boolean</code><p>Should the text be wrapped in paragraph tags or divided by newlines.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The bacon ipsum content.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_lipsum"></a><div class="element clickable function  function_mcn_get_lipsum" data-toggle="collapse" data-target=".function_mcn_get_lipsum .collapse" title="">
+<h2>Retrieve Loreum Ipsum (API Response:HTML/Plain Text)</h2>
+<pre>mcn_get_lipsum(array $shortcode_atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$content = mcn_get_lipsum( $shortcode_atts, $paragraph_count );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttp://loripsum.net/"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_cached_http_response()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_cache_http_response()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<div class="subelement argument">
+<h4>$paragraph_count</h4>
+<code>integer</code><p>The count of paragraphs to retrieve.</p></div>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>boolean</code><p>Should the text be wrapped in paragraph tags or divided by newlines.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The lipsum content.</div>
+</div></div>
+</div>
+<a id="function_mcn_get_placeholder_content"></a><div class="element clickable function  function_mcn_get_placeholder_content" data-toggle="collapse" data-target=".function_mcn_get_placeholder_content .collapse" title="">
+<h2>Retrieves the correct placeholder content.</h2>
+<pre>mcn_get_placeholder_content(array $shortcode_atts) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_hipster_ipsum()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_bacon_ipsum()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_blokk_font()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_placeholder_image()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_lipsum()"></a></td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p>
+<code>$placeholder_content = mcn_get_placeholder_content( $atts );</code></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The selected ipsum content.</div>
+</div></div>
+</div>
+<a id="function_mcn_missing_content_shortcode"></a><div class="element clickable function  function_mcn_missing_content_shortcode" data-toggle="collapse" data-target=".function_mcn_missing_content_shortcode .collapse" title="">
+<h2>Adds a missing content ShortCode.</h2>
+<pre>mcn_missing_content_shortcode(array $atts) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>[missing-content ipsum_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code></div>
+<table class="table table-bordered">
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_placeholder_content()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The missing content HTML.</div>
+</div></div>
+</div>
+<a id="function_mcn_placeholder_image"></a><div class="element clickable function  function_mcn_placeholder_image" data-toggle="collapse" data-target=".function_mcn_placeholder_image .collapse" title="">
+<h2>Placeholder image.</h2>
+<pre>mcn_placeholder_image(integer $width<code> = 150</code>, integer $height<code> = 150</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$placeholder_image = mcn_placeholder_image( $width, $height );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="%5Chttp://placehold.it"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$width</h4>
+<code>integer</code><p>Image width.</p></div>
+<div class="subelement argument">
+<h4>$height</h4>
+<code>integer</code><p>Image height.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Missing image HTML.</div>
+</div></div>
+</div>
+<a id="function_pp"></a><div class="element clickable function  function_pp" data-toggle="collapse" data-target=".function_pp .collapse" title="">
+<h2>Pretty Print Debug Function</h2>
+<pre>pp(mixed $value) : Void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>pp( $something_to_pretty_print );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>uses</th>
+<td><a href="mcn_debug_is_localhost()"></a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Any value to pretty print.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>Void</code></div>
+</div></div>
+</div>
+<h3>
+<i title="Constants" class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_MCN_PATH"> </a><div class="element clickable constant  constant_MCN_PATH" data-toggle="collapse" data-target=".constant_MCN_PATH .collapse" title="">
+<h2>Missing Content Notice plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).</h2>
+<pre>MCN_PATH = plugin_dir_path(__FILE__) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_MCN_URL"> </a><div class="element clickable constant  constant_MCN_URL" data-toggle="collapse" data-target=".constant_MCN_URL .collapse" title="">
+<h2>Missing Content Notice plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).</h2>
+<pre>MCN_URL = plugins_url('/missing-content-notice') : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_MCN_VERSION"> </a><div class="element clickable constant  constant_MCN_VERSION" data-toggle="collapse" data-target=".constant_MCN_VERSION .collapse" title="">
+<h2>Missing Content Notice version number.</h2>
+<pre>MCN_VERSION = '1.0.0' : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.2.0
+</a> and<br>
+            generated on 2014-03-16T12:57:20-05:00.<br></footer></div>
+</div>
+</body>
+</html>

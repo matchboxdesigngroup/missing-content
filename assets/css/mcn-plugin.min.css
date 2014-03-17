@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'BLOKKNeue-Regular';
+  src: url("../fonts/BLOKKNeue-Regular/BLOKKNeue-Regular.eot");
+  src: url("../fonts/BLOKKNeue-Regular/BLOKKNeue-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/BLOKKNeue-Regular/BLOKKNeue-Regular.woff") format("woff"), url("../fonts/BLOKKNeue-Regular/BLOKKNeue-Regular.ttf") format("truetype"), url("../fonts/BLOKKNeue-Regular/BLOKKNeue-Regular.svg#svgFontName") format("svg");
+}
+
+.mc-blokk {
+  font-family: "BLOKKNeue-Regular", serif;
+}
+
+div.missing-content-notice-shortcode {
+  background: #fcf8e3;
+  border: 1px solid #faebcc;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #8a6d3b;
+  padding: 10px;
+}
+
+div.missing-content-notice-shortcode:before,
+div.missing-content-notice-shortcode:after {
+  content: ' ';
+  display: table;
+}
+
+div.missing-content-notice-shortcode:after {
+  clear: both;
+}

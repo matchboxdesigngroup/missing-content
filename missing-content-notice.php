@@ -1,6 +1,6 @@
 <?php
 /**
- * Missing Content ShortCode
+ *  Missing Content
  *
  * @version      1.0.0
  * @package      WordPress
@@ -13,8 +13,8 @@
  */
 
 /*
-Plugin Name:  Missing Content Notice
-Description:  Adds a ShortCode for when there is missing content, useful for development purposes.
+Plugin Name:  Missing Content
+Description:  Adds a missing content notice for when there is missing content, useful for development purposes.
 Plugin URI:   http://#
 Author:       dholloran
 Author URI:   http://danholloran.me
@@ -47,28 +47,28 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Missing Content Notice version number.
+ * Missing Content version number.
  *
  * @var  string
  */
 define( 'MCN_VERSION', '1.0.0' );
 
 /**
- * Missing Content Notice plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).
+ * Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).
  *
  * @var  string
  */
 define( MCN_URL, plugins_url( '/missing-content-notice' ) );
 
 /**
- * Missing Content Notice plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).
+ * Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).
  *
  * @var  string
  */
 define( 'MCN_PATH', plugin_dir_path( __FILE__ ) );
 
 // Debugging
-require_once 'mcn-debug.php';
+// require_once 'includes/mcn-debug.php';
 
 
 /**
@@ -488,7 +488,7 @@ function mcn_get_placeholder_content( $shortcode_atts ) {
  * @return  void
  */
 function mcn_enqueue_scripts_and_styles() {
-	wp_enqueue_style( 'mcn_main_css', MCN_URL . '/assets/css/mcs-plugin.min.css', array(), MCN_VERSION, 'screen' );
+	wp_enqueue_style( 'mcn_main_css', MCN_URL . '/assets/css/mcn-plugin.min.css', array(), MCN_VERSION, 'screen' );
 } // mcn_enqueue_scripts_and_styles()
 add_action( 'wp_head', 'mcn_enqueue_scripts_and_styles' );
 
