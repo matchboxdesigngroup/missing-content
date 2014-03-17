@@ -1,6 +1,6 @@
 <?php
 /**
- *  Missing Content Notice
+ *  Missing Content
  *
  * @version      1.0.0
  * @package      WordPress
@@ -13,7 +13,7 @@
  */
 
 /*
-Plugin Name:  Missing Content Notice
+Plugin Name:  Missing Content
 Description:  Adds a missing content notice for when there is missing content, useful for development purposes.
 Plugin URI:   http://#
 Author:       dholloran
@@ -47,21 +47,21 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Missing Content Notice version number.
+ * Missing Content version number.
  *
  * @var  string
  */
 define( 'MCN_VERSION', '1.0.0' );
 
 /**
- * Missing Content Notice plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).
+ * Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).
  *
  * @var  string
  */
 define( MCN_URL, plugins_url( '/missing-content-notice' ) );
 
 /**
- * Missing Content Notice plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).
+ * Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).
  *
  * @var  string
  */
