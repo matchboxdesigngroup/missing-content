@@ -1,3 +1,7 @@
+##Missing Content
+===============
+WordPress plugin for placeholder content
+
 ###[Lipsum](http://loripsum.net/) (default)
 `[missing-content]`
 `[missing-content paragraph_count="3"]`
