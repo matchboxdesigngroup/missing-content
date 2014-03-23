@@ -11,10 +11,12 @@ module.exports =
 					'!.sass-cache/**',
 					'!**/scss/**',
 					'!assets/js/src/**',
+					'!screenshots/**',
 					'!Gruntfile.js',
 					'!package.json',
 					'!.gitignore',
-					'!Readme.md',
+					'!README.md',
+					'!LICENSE',
 					'!phpdoc.dist.xml',
 					'!st3-ignores.txt',
 					'!grunt/**',
@@ -22,5 +24,5 @@ module.exports =
 					'!**/*.map',
 					'!**/.DS_Store',
 				],
-			dest: 'releases/latest/'
+			dest: 'releases/missing-content/'
 		]
