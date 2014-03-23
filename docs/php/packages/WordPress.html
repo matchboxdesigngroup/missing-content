@@ -60,6 +60,7 @@
 <li class="function  "><a href="#function_mcn_blokk_font" title="mcn_blokk_font() :: Blokk font placeholder font."><span class="description">Blokk font placeholder font.</span><pre>mcn_blokk_font</pre></a></li>
 <li class="function  "><a href="#function_mcn_cache_http_response" title="mcn_cache_http_response() :: Caches the HTTP response content."><span class="description">Caches the HTTP response content.</span><pre>mcn_cache_http_response</pre></a></li>
 <li class="function  "><a href="#function_mcn_cache_http_response_multisite" title="mcn_cache_http_response_multisite() :: Caches the HTTP response content, used on WordPress MultiSite installs."><span class="description">Caches the HTTP response content, used on WordPress MultiSite installs.</span><pre>mcn_cache_http_response_multisite</pre></a></li>
+<li class="function  "><a href="#function_mcn_cache_is_disabled" title="mcn_cache_is_disabled() :: Checks if the cache is disabled."><span class="description">Checks if the cache is disabled.</span><pre>mcn_cache_is_disabled</pre></a></li>
 <li class="function  "><a href="#function_mcn_debug_is_localhost" title="mcn_debug_is_localhost() :: Checks if the current host is localhost, a VirtualBox VM, or sitename.dev vHost."><span class="description">Checks if the current host is localhost, a VirtualBox VM, or sitename.dev vHost.</span><pre>mcn_debug_is_localhost</pre></a></li>
 <li class="function  "><a href="#function_mcn_enqueue_scripts_and_styles" title="mcn_enqueue_scripts_and_styles() :: Adds Missing Content ShortCode scripts and styles."><span class="description">Adds Missing Content ShortCode scripts and styles.</span><pre>mcn_enqueue_scripts_and_styles</pre></a></li>
 <li class="function  "><a href="#function_mcn_fallback_ipsum" title="mcn_fallback_ipsum() :: If selected API fails this will be used as a fall back placeholder content."><span class="description">If selected API fails this will be used as a fall back placeholder content.</span><pre>mcn_fallback_ipsum</pre></a></li>
@@ -75,8 +76,8 @@
 <li class="function  "><a href="#function_pp" title="pp() :: Pretty Print Debug Function"><span class="description">Pretty Print Debug Function</span><pre>pp</pre></a></li>
 <li class="nav-header">
 <i title="Constants" class="icon-custom icon-constant"></i> Constants</li>
-<li class="constant  "><a href="#constant_MCN_PATH" title="MCN_PATH() :: Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/)."><span class="description">Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).</span><pre>MCN_PATH</pre></a></li>
-<li class="constant  "><a href="#constant_MCN_URL" title="MCN_URL() :: Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content-notice)."><span class="description">Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).</span><pre>MCN_URL</pre></a></li>
+<li class="constant  "><a href="#constant_MCN_PATH" title="MCN_PATH() :: Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content/)."><span class="description">Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content/).</span><pre>MCN_PATH</pre></a></li>
+<li class="constant  "><a href="#constant_MCN_URL" title="MCN_URL() :: Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content)."><span class="description">Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content).</span><pre>MCN_URL</pre></a></li>
 <li class="constant  "><a href="#constant_MCN_VERSION" title="MCN_VERSION() :: Missing Content version number."><span class="description">Missing Content version number.</span><pre>MCN_VERSION</pre></a></li>
 </ul>
 </div>
@@ -177,6 +178,25 @@
 <div class="subelement argument">
 <h4>$shortcode_atts</h4>
 <code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+</div></div>
+</div>
+<a id="function_mcn_cache_is_disabled"></a><div class="element clickable function  function_mcn_cache_is_disabled" data-toggle="collapse" data-target=".function_mcn_cache_is_disabled .collapse" title="">
+<h2>Checks if the cache is disabled.</h2>
+<pre>mcn_cache_is_disabled(array $shortcode_atts) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>
+if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+	return;
+} // if()
+</code></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$shortcode_atts</h4>
+<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>If the cache should be disabled.</div>
 </div></div>
 </div>
 <a id="function_mcn_debug_is_localhost"></a><div class="element clickable function  function_mcn_debug_is_localhost" data-toggle="collapse" data-target=".function_mcn_debug_is_localhost .collapse" title="">
@@ -480,11 +500,15 @@ if ( mcn_debug_is_localhost() ) {
 <pre>mcn_missing_content_shortcode(array $atts) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>[missing-content ipsum_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code></div>
+<div class="long_description"><code>[missing-content content_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code></div>
 <table class="table table-bordered">
 <tr>
 <th>uses</th>
 <td><a href="mcn_get_placeholder_content()"></a></td>
+</tr>
+<tr>
+<th>todo</th>
+<td>Add a random option for paragraph_count and lcontent_type</td>
 </tr>
 <tr>
 <th>since</th>
@@ -555,14 +579,14 @@ if ( mcn_debug_is_localhost() ) {
 <h3>
 <i title="Constants" class="icon-custom icon-constant"></i> Constants</h3>
 <a id="constant_MCN_PATH"> </a><div class="element clickable constant  constant_MCN_PATH" data-toggle="collapse" data-target=".constant_MCN_PATH .collapse" title="">
-<h2>Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).</h2>
+<h2>Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content/).</h2>
 <pre>MCN_PATH = plugin_dir_path(__FILE__) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="constant_MCN_URL"> </a><div class="element clickable constant  constant_MCN_URL" data-toggle="collapse" data-target=".constant_MCN_URL .collapse" title="">
-<h2>Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).</h2>
-<pre>MCN_URL = plugins_url('/missing-content-notice') : string</pre>
+<h2>Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content).</h2>
+<pre>MCN_URL = plugins_url('/missing-content') : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -579,7 +603,7 @@ if ( mcn_debug_is_localhost() ) {
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.2.0
 </a> and<br>
-            generated on 2014-03-17T09:22:05-05:00.<br></footer></div>
+            generated on 2014-03-23T09:55:34-05:00.<br></footer></div>
 </div>
 </body>
 </html>
