@@ -45,30 +45,74 @@ if ( ! defined( 'WPINC' ) ) {
 } // if()
 
 
+if ( ! defined( 'MCN_VERSION' ) ) {
+	/**
+	 * Missing Content version number.
+	 *
+	 * @var  string
+	 */
+	define( 'MCN_VERSION', '1.0.0' );
+} // if()
 
-/**
- * Missing Content version number.
- *
- * @var  string
- */
-define( 'MCN_VERSION', '1.0.0' );
+if ( ! defined( 'MCN_URL' ) ) {
+	/**
+	 * Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content).
+	 *
+	 * @var  string
+	 */
+	define( 'MCN_URL', plugins_url( '/missing-content' ) );
+} // if()
 
-/**
- * Missing Content plugin URL without trailing slash (http://{plugins_url}/missing-content-notice).
- *
- * @var  string
- */
-define( 'MCN_URL', plugins_url( '/missing-content-notice' ) );
-
-/**
- * Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content-notice/).
- *
- * @var  string
- */
-define( 'MCN_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'MCN_PATH' ) ) {
+	/**
+	 * Missing Content plugin path with trailing slash (/PATH/TO/PLUGIN/DIRECTORY/missing-content/).
+	 *
+	 * @var  string
+	 */
+	define( 'MCN_PATH', plugin_dir_path( __FILE__ ) );
+} // if()
 
 // Debugging
 // require_once 'includes/mcn-debug.php';
+
+
+
+/**
+ * Checks if the cache is disabled.
+ *
+ * <code>
+ * if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+ * 	return;
+ * } // if()
+ * </code>
+ *
+ * @param   array    $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ *
+ * @return  boolean                   If the cache should be disabled.
+ */
+function mcn_cache_is_disabled( $shortcode_atts ) {
+	if ( gettype( $shortcode_atts['cache_duration'] ) != 'integer' ) {
+		return true;
+	} // if()
+
+	// Never cache
+	if ( $shortcode_atts['cache_duration'] == 0 ) {
+		return true;
+	} // if()
+
+	// We have a problem!!
+	if ( is_null( $shortcode_atts['cache_duration'] ) ) {
+		return true;
+	} // if()
+
+	// We have stop the cache for some other reason...should have used 0
+	if ( ! $shortcode_atts['cache_duration'] ) {
+		return true;
+	} // if()
+
+	return false;
+} // mcn_cache_is_disabled()
+
 
 
 /**
@@ -112,6 +156,10 @@ function mcn_get_cached_http_response_transient_key( $shortcode_atts ) {
  * @return  void
  */
 function mcn_cache_http_response( $response, $shortcode_atts ) {
+	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+		return;
+	} // if()
+
 	if ( is_multisite() ) {
 		return mcn_cache_http_response_multisite( $reponse, $shortcode_atts );
 	} // if()
@@ -143,6 +191,10 @@ function mcn_cache_http_response( $response, $shortcode_atts ) {
  * @return  void
  */
 function mcn_cache_http_response_multisite( $response, $shortcode_atts ) {
+	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+		return;
+	} // if()
+
 	$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );
 
 	extract( $shortcode_atts );
@@ -170,6 +222,10 @@ function mcn_cache_http_response_multisite( $response, $shortcode_atts ) {
  * @return  mixed                  The cached content if it exists or false if it does not.
  */
 function mcn_get_cached_http_response( $shortcode_atts ) {
+	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+		return false;
+	} // if()
+
 	if ( is_multisite() ) {
 		return mcn_get_cached_http_response_multisite( $shortcode_atts );
 	} // if()
@@ -202,6 +258,10 @@ function mcn_get_cached_http_response( $shortcode_atts ) {
  * @return  mixed                    The cached content if it exists or false if it does not.
  */
 function mcn_get_cached_http_response_multisite( $shortcode_atts ) {
+	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+		return false;
+	} // if()
+
 	$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );
 
 	$get_site_transient = get_site_transient( $transient );
@@ -449,7 +509,7 @@ function mcn_get_placeholder_content( $shortcode_atts ) {
 	extract( $shortcode_atts );
 
 	$content = '';
-	switch ( $ipsum_type ) {
+	switch ( $content_type ) {
 		case 'hipster':
 			$content = mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count );
 			break;
@@ -497,9 +557,11 @@ add_action( 'wp_head', 'mcn_enqueue_scripts_and_styles' );
 /**
  * Adds a missing content ShortCode.
  *
- * <code>[missing-content ipsum_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code>
+ * <code>[missing-content content_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code>
  *
  * @uses    mcn_get_placeholder_content()
+ *
+ * @todo    Add a random option for paragraph_count and lcontent_type
  *
  * @since   1.0.0
  *
@@ -509,21 +571,43 @@ add_action( 'wp_head', 'mcn_enqueue_scripts_and_styles' );
  */
 function mcn_missing_content_shortcode( $atts ) {
 	$defaults = array(
-		'ipsum_type'      => 'lipsum', // lipsum|hipster|bacon|blokk
+		'content_type'    => 'lipsum', // lipsum|hipster|bacon|blokk|image
 		'paragraph_count' => 3,
 		'width'           => 150,
 		'height'          => 150,
-		'cache_duration'  => ( 3 * HOUR_IN_SECONDS ), // {time in seconds}|always
+		// 'random'          => false,
+		'cache_duration'  => ( 3 * HOUR_IN_SECONDS ), // {time in seconds}|always|never
 	);
 	$atts = shortcode_atts( $defaults, $atts );
 
+	// Should we randomize it?
+	// $atts['random'] = ( $atts['random'] == 'true' ) ? true : false;
+	// if ( $atts['random'] ) {
+	// 	$atts['cache_duration']  = 'never';
+	// 	$atts['paragraph_count'] = rand( 1, 5 ); // We may need to tweak the max...
+	// 	$content_types           = array( 'lipsum', 'hipster', 'bacon', 'blokk', 'image' );
+	// 	$atts['content_type']    = rand( 1, 5 );
+	// } // if()
+
+	$cache_duration = $atts['cache_duration'];
+
 	// Allows for the response to "always" be cached, if missing content
 	// has not been added in a year you have a larger problem than the cache...
-	$atts['cache_duration'] = ( $atts['cache_duration'] == 'always' ) ? YEAR_IN_SECONDS : intval( $atts['cache_duration'] );
+	$cache_duration = ( $cache_duration == 'always' ) ? YEAR_IN_SECONDS : $cache_duration;
+
+	// Allows for the response to "never" be cached, since it is a staging/development
+	// that should be okay.
+	$cache_duration = ( $cache_duration == 'never' ) ? 0 : $cache_duration;
+
+	// Only allow numbers for caching
+	$cache_duration = preg_replace( '/[^0-9]/', '', $cache_duration );
+
+	// Set cache to be an integer
+	$atts['cache_duration'] = intval( $cache_duration );
 
 	extract( $atts );
 
-	if ( $ipsum_type == 'image' ) {
+	if ( $content_type == 'image' ) {
 		return wp_kses( mcn_get_placeholder_content( $atts ), 'post' );
 	} // if()
 
