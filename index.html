@@ -28,37 +28,87 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h2>
+<a name="missing-content" class="anchor" href="#missing-content"><span class="octicon octicon-link"></span></a>Missing Content</h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Allows you to add placeholder content quickly and easily to your site.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Missing content offers multiple different content choices, if you would like to request something else please post it to the support forums.</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="content-choices" class="anchor" href="#content-choices"><span class="octicon octicon-link"></span></a>Content Choices</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ul>
+<li>Loreum Ipsum from <a href="http://loripsum.net/">http://loripsum.net/</a>
+</li>
+<li>Bacon Ipsum from <a href="http://baconipsum.com/">http://baconipsum.com/api/</a>
+</li>
+<li>Hipster Ipsum from <a href="http://hipsterjesus.com/">http://hipsterjesus.com/</a>
+</li>
+<li>Blokk Font <a href="http://blokkfont.com/">http://blokkfont.com/</a>
+</li>
+<li>Image from <a href="http://placehold.it">http://placehold.it</a>
+</li>
+</ul><h3>
+<a name="shortcode-attributes" class="anchor" href="#shortcode-attributes"><span class="octicon octicon-link"></span></a>ShortCode Attributes</h3>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<ul>
+<li>content_type
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ul>
+<li>default: lipsum</li>
+<li>options: lipsum|hipster|bacon|blokk|image</li>
+</ul>
+</li>
+<li>paragraph_count
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<ul>
+<li>default: 3</li>
+</ul>
+</li>
+<li>width
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li>default: 150</li>
+</ul>
+</li>
+<li>height
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<ul>
+<li>default: 150</li>
+</ul>
+</li>
+<li>cache_duration
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li>default: 3 hours aka 10800 aka (3 * 60 * 60)</li>
+<li>options: {time in seconds}|always|never</li>
+</ul>
+</li>
+</ul><h3>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<ul>
+<li>
+<strong><code>[missing-content]</code></strong> 3 paragraphs from <a href="http://loripsum.net/">http://loripsum.net/</a> updated every 3 hours.</li>
+<li>
+<strong><code>[missing-content cache_duration="always"]</code></strong> Never updates the content.</li>
+<li>
+<strong><code>[missing-content cache_duration="never"]</code></strong> 3 paragraphs from <a href="http://loripsum.net/">http://loripsum.net/</a> updated every page refresh. NOTE: do not use this if using a tool like LiveReload.</li>
+<li>
+<strong><code>[missing-content paragraph_count="1" cache_duration="86400"]</code></strong> Displays one paragraph updated every day (24 * 60 * 60).</li>
+<li>
+<strong><code>[missing-content content_type="bacon" paragraph_count="5"]</code></strong> 5 paragraphs from <a href="http://baconipsum.com/">http://baconipsum.com/api/</a> updated every 3 hours.</li>
+<li>
+<strong><code>[missing-content content_type="hipster"]</code></strong> 3 paragraphs from <a href="http://hipsterjesus.com/">http://hipsterjesus.com/</a> updated every 3 hours.</li>
+<li>
+<strong><code>[missing-content content_type="blokk"]</code></strong> 3 paragraphs of Blokk font using <a href="http://blokkfont.com/">http://blokkfont.com/</a> updated every 3 hours.</li>
+<li>
+<strong><code>[missing-content content_type="image" width="500" height="500"]</code></strong> 500px x 500px image from <a href="http://placehold.it">http://placehold.it</a> NOTE: no cache control.</li>
+</ul><p>More examples can be found <a href="http://danholloran.me/missing-content/">here</a></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/matchboxdesigngroup">matchboxdesigngroup</a></p>
