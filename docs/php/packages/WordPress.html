@@ -71,8 +71,10 @@
 <li class="function  "><a href="#function_mcn_get_hipster_ipsum" title="mcn_get_hipster_ipsum() :: Retrieves Hipster Ipsum (API Response:JSON)."><span class="description">Retrieves Hipster Ipsum (API Response:JSON).</span><pre>mcn_get_hipster_ipsum</pre></a></li>
 <li class="function  "><a href="#function_mcn_get_lipsum" title="mcn_get_lipsum() :: Retrieve Loreum Ipsum (API Response:HTML/Plain Text)"><span class="description">Retrieve Loreum Ipsum (API Response:HTML/Plain Text)</span><pre>mcn_get_lipsum</pre></a></li>
 <li class="function  "><a href="#function_mcn_get_placeholder_content" title="mcn_get_placeholder_content() :: Retrieves the correct placeholder content."><span class="description">Retrieves the correct placeholder content.</span><pre>mcn_get_placeholder_content</pre></a></li>
-<li class="function  "><a href="#function_mcn_missing_content_shortcode" title="mcn_missing_content_shortcode() :: Adds a missing content ShortCode."><span class="description">Adds a missing content ShortCode.</span><pre>mcn_missing_content_shortcode</pre></a></li>
+<li class="function  "><a href="#function_mcn_missing_content" title="mcn_missing_content() :: Selects the type of content and creates the final HTML."><span class="description">Selects the type of content and creates the final HTML.</span><pre>mcn_missing_content</pre></a></li>
+<li class="function  "><a href="#function_mcn_missing_content_shortcode" title="mcn_missing_content_shortcode() :: Adds the missing content ShortCode."><span class="description">Adds the missing content ShortCode.</span><pre>mcn_missing_content_shortcode</pre></a></li>
 <li class="function  "><a href="#function_mcn_placeholder_image" title="mcn_placeholder_image() :: Placeholder image."><span class="description">Placeholder image.</span><pre>mcn_placeholder_image</pre></a></li>
+<li class="function  "><a href="#function_mcn_set_options" title="mcn_set_options() :: Handles setting/sorting/filtering of all of the possible options."><span class="description">Handles setting/sorting/filtering of all of the possible options.</span><pre>mcn_set_options</pre></a></li>
 <li class="function  "><a href="#function_pp" title="pp() :: Pretty Print Debug Function"><span class="description">Pretty Print Debug Function</span><pre>pp</pre></a></li>
 <li class="nav-header">
 <i title="Constants" class="icon-custom icon-constant"></i> Constants</li>
@@ -90,10 +92,10 @@
 <i title="Functions" class="icon-custom icon-function"></i> Functions</h3>
 <a id="function_mcn_blokk_font"></a><div class="element clickable function  function_mcn_blokk_font" data-toggle="collapse" data-target=".function_mcn_blokk_font .collapse" title="">
 <h2>Blokk font placeholder font.</h2>
-<pre>mcn_blokk_font(array $shortcode_atts, integer $paragraph_count<code> = 3</code>) : string</pre>
+<pre>mcn_blokk_font(array $atts, integer $paragraph_count<code> = 3</code>) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>$content = mcn_blokk_font( $shortcode_atts, $paragraph_count );</code></div>
+<div class="long_description"><code>$content = mcn_blokk_font( $atts, $paragraph_count );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -110,8 +112,8 @@
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <div class="subelement argument">
 <h4>$paragraph_count</h4>
 <code>integer</code><p>The count of paragraphs to retrieve.</p></div>
@@ -122,12 +124,12 @@
 </div>
 <a id="function_mcn_cache_http_response"></a><div class="element clickable function  function_mcn_cache_http_response" data-toggle="collapse" data-target=".function_mcn_cache_http_response .collapse" title="">
 <h2>Caches the HTTP response content.</h2>
-<pre>mcn_cache_http_response(mixed $response, array $shortcode_atts) : void</pre>
+<pre>mcn_cache_http_response(mixed $response, array $atts) : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description">Will use mcn_cache_http_response_multisite() if it is a Multisite installation.
 
-<code>mcn_cache_http_response( $response, $shortcode_atts );</code></div>
+<code>mcn_cache_http_response( $response, $atts );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -147,16 +149,16 @@
 <h4>$response</h4>
 <code>mixed</code><p>The response to cache from the HTTP request.</p></div>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 </div></div>
 </div>
 <a id="function_mcn_cache_http_response_multisite"></a><div class="element clickable function  function_mcn_cache_http_response_multisite" data-toggle="collapse" data-target=".function_mcn_cache_http_response_multisite .collapse" title="">
 <h2>Caches the HTTP response content, used on WordPress MultiSite installs.</h2>
-<pre>mcn_cache_http_response_multisite(mixed $response, array $shortcode_atts) : void</pre>
+<pre>mcn_cache_http_response_multisite(mixed $response, array $atts) : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>mcn_cache_http_response_multisite( $response, $shortcode_atts );</code></div>
+<div class="long_description"><code>mcn_cache_http_response_multisite( $response, $atts );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -176,24 +178,24 @@
 <h4>$response</h4>
 <code>mixed</code><p>The response to cache from the HTTP request.</p></div>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 </div></div>
 </div>
 <a id="function_mcn_cache_is_disabled"></a><div class="element clickable function  function_mcn_cache_is_disabled" data-toggle="collapse" data-target=".function_mcn_cache_is_disabled .collapse" title="">
 <h2>Checks if the cache is disabled.</h2>
-<pre>mcn_cache_is_disabled(array $shortcode_atts) : boolean</pre>
+<pre>mcn_cache_is_disabled(array $atts) : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><code>
-if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+if ( mcn_cache_is_disabled( $atts ) ) {
 	return;
 } // if()
 </code></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>boolean</code>If the cache should be disabled.</div>
@@ -251,10 +253,10 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_bacon_ipsum"></a><div class="element clickable function  function_mcn_get_bacon_ipsum" data-toggle="collapse" data-target=".function_mcn_get_bacon_ipsum .collapse" title="">
 <h2>Retrieves Bacon Ipsum (API Response:JSON).</h2>
-<pre>mcn_get_bacon_ipsum(array $shortcode_atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
+<pre>mcn_get_bacon_ipsum(array $atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>$content = mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count );</code></div>
+<div class="long_description"><code>$content = mcn_get_bacon_ipsum( $atts, $paragraph_count );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -275,8 +277,8 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <div class="subelement argument">
 <h4>$paragraph_count</h4>
 <code>integer</code><p>The count of paragraphs to retrieve.</p></div>
@@ -290,12 +292,12 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_cached_http_response"></a><div class="element clickable function  function_mcn_get_cached_http_response" data-toggle="collapse" data-target=".function_mcn_get_cached_http_response .collapse" title="">
 <h2>Retrieves the cached HTTP response if it exists.</h2>
-<pre>mcn_get_cached_http_response(array $shortcode_atts) : mixed</pre>
+<pre>mcn_get_cached_http_response(array $atts) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description">Will use mcn_get_cached_http_response_multisite() if it is a Multisite installation.
 
-<code>$cache = mcn_get_cached_http_response( $shortcode_atts );</code></div>
+<code>$cache = mcn_get_cached_http_response( $atts );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -312,8 +314,8 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>mixed</code>The cached content if it exists or false if it does not.</div>
@@ -321,10 +323,10 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_cached_http_response_multisite"></a><div class="element clickable function  function_mcn_get_cached_http_response_multisite" data-toggle="collapse" data-target=".function_mcn_get_cached_http_response_multisite .collapse" title="">
 <h2>Retrieves the cached HTTP response if it exists, used on WordPress MultiSite installs.</h2>
-<pre>mcn_get_cached_http_response_multisite(array $shortcode_atts) : mixed</pre>
+<pre>mcn_get_cached_http_response_multisite(array $atts) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>$cache = mcn_get_cached_http_response_multisite( $shortcode_atts );</code></div>
+<div class="long_description"><code>$cache = mcn_get_cached_http_response_multisite( $atts );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -341,8 +343,8 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>mixed</code>The cached content if it exists or false if it does not.</div>
@@ -350,12 +352,12 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_cached_http_response_transient_key"></a><div class="element clickable function  function_mcn_get_cached_http_response_transient_key" data-toggle="collapse" data-target=".function_mcn_get_cached_http_response_transient_key .collapse" title="">
 <h2>Retrieves the transient key for the HTTP response cache.</h2>
-<pre>mcn_get_cached_http_response_transient_key(array $shortcode_atts) : <a href="return.html">\return</a></pre>
+<pre>mcn_get_cached_http_response_transient_key(array $atts) : <a href="return.html">\return</a></pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description">Uses MD5 to create a transient key from the ShortCode attributes.
 
-<code>$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );</code></div>
+<code>$transient = mcn_get_cached_http_response_transient_key( $atts );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -368,8 +370,8 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="return.html">\return</a></code>The transient key.</div>
@@ -377,10 +379,10 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_hipster_ipsum"></a><div class="element clickable function  function_mcn_get_hipster_ipsum" data-toggle="collapse" data-target=".function_mcn_get_hipster_ipsum .collapse" title="">
 <h2>Retrieves Hipster Ipsum (API Response:JSON).</h2>
-<pre>mcn_get_hipster_ipsum(array $shortcode_atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
+<pre>mcn_get_hipster_ipsum(array $atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>$content = mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count );</code></div>
+<div class="long_description"><code>$content = mcn_get_hipster_ipsum( $atts, $paragraph_count );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -401,8 +403,8 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <div class="subelement argument">
 <h4>$paragraph_count</h4>
 <code>integer</code><p>The count of paragraphs to retrieve.</p></div>
@@ -416,10 +418,10 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_lipsum"></a><div class="element clickable function  function_mcn_get_lipsum" data-toggle="collapse" data-target=".function_mcn_get_lipsum .collapse" title="">
 <h2>Retrieve Loreum Ipsum (API Response:HTML/Plain Text)</h2>
-<pre>mcn_get_lipsum(array $shortcode_atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
+<pre>mcn_get_lipsum(array $atts, integer $paragraph_count<code> = 3</code>, boolean $html<code> = true</code>) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><code>$content = mcn_get_lipsum( $shortcode_atts, $paragraph_count );</code></div>
+<div class="long_description"><code>$content = mcn_get_lipsum( $atts, $paragraph_count );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
@@ -440,8 +442,8 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <div class="subelement argument">
 <h4>$paragraph_count</h4>
 <code>integer</code><p>The count of paragraphs to retrieve.</p></div>
@@ -455,10 +457,10 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="function_mcn_get_placeholder_content"></a><div class="element clickable function  function_mcn_get_placeholder_content" data-toggle="collapse" data-target=".function_mcn_get_placeholder_content .collapse" title="">
 <h2>Retrieves the correct placeholder content.</h2>
-<pre>mcn_get_placeholder_content(array $shortcode_atts) : string</pre>
+<pre>mcn_get_placeholder_content(array $atts) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><code>$placeholder_content = mcn_get_placeholder_content( $atts );</code></div>
 <table class="table table-bordered">
 <tr>
 <th>since</th>
@@ -487,16 +489,47 @@ if ( mcn_debug_is_localhost() ) {
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$shortcode_atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p>
-<code>$placeholder_content = mcn_get_placeholder_content( $atts );</code></div>
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>The selected ipsum content.</div>
 </div></div>
 </div>
+<a id="function_mcn_missing_content"></a><div class="element clickable function  function_mcn_missing_content" data-toggle="collapse" data-target=".function_mcn_missing_content .collapse" title="">
+<h2>Selects the type of content and creates the final HTML.</h2>
+<pre>mcn_missing_content(array $atts, boolean $echo<code> = true</code>) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><code>$html = mcn_missing_content( $atts, false );</code></div>
+<table class="table table-bordered">
+<tr>
+<th>since</th>
+<td>1.1.0</td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_set_options()"></a></td>
+</tr>
+<tr>
+<th>uses</th>
+<td><a href="mcn_get_placeholder_content()"></a></td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
+<div class="subelement argument">
+<h4>$echo</h4>
+<code>boolean</code><p>Optional, if it should be output to the screen default true.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The selected placeholder content and HTML.</div>
+</div></div>
+</div>
 <a id="function_mcn_missing_content_shortcode"></a><div class="element clickable function  function_mcn_missing_content_shortcode" data-toggle="collapse" data-target=".function_mcn_missing_content_shortcode .collapse" title="">
-<h2>Adds a missing content ShortCode.</h2>
+<h2>Adds the missing content ShortCode.</h2>
 <pre>mcn_missing_content_shortcode(array $atts) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -504,11 +537,7 @@ if ( mcn_debug_is_localhost() ) {
 <table class="table table-bordered">
 <tr>
 <th>uses</th>
-<td><a href="mcn_get_placeholder_content()"></a></td>
-</tr>
-<tr>
-<th>todo</th>
-<td>Add a random option for paragraph_count and lcontent_type</td>
+<td><a href="mcn_missing_content()"></a></td>
 </tr>
 <tr>
 <th>since</th>
@@ -518,7 +547,7 @@ if ( mcn_debug_is_localhost() ) {
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$atts</h4>
-<code>array</code><p>The ShortCodes attributes aka ShortCode options.</p></div>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>The missing content HTML.</div>
@@ -550,6 +579,27 @@ if ( mcn_debug_is_localhost() ) {
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Missing image HTML.</div>
+</div></div>
+</div>
+<a id="function_mcn_set_options"></a><div class="element clickable function  function_mcn_set_options" data-toggle="collapse" data-target=".function_mcn_set_options .collapse" title="">
+<h2>Handles setting/sorting/filtering of all of the possible options.</h2>
+<pre>mcn_set_options(array $atts) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description">See $defaults for all possible options/ShortCode attributes.
+
+<code>$atts = mcn_set_options( $atts );</code></div>
+<table class="table table-bordered"><tr>
+<th>since</th>
+<td>1.1.0</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$atts</h4>
+<code>array</code><p>The ShortCodes attributes aka options.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The sorted/filtered options.</div>
 </div></div>
 </div>
 <a id="function_pp"></a><div class="element clickable function  function_pp" data-toggle="collapse" data-target=".function_pp .collapse" title="">
@@ -592,7 +642,7 @@ if ( mcn_debug_is_localhost() ) {
 </div>
 <a id="constant_MCN_VERSION"> </a><div class="element clickable constant  constant_MCN_VERSION" data-toggle="collapse" data-target=".constant_MCN_VERSION .collapse" title="">
 <h2>Missing Content version number.</h2>
-<pre>MCN_VERSION = '1.0.0' : string</pre>
+<pre>MCN_VERSION = '1.1.0' : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -603,7 +653,7 @@ if ( mcn_debug_is_localhost() ) {
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.2.0
 </a> and<br>
-            generated on 2014-03-23T09:55:34-05:00.<br></footer></div>
+            generated on 2014-03-30T10:33:14-05:00.<br></footer></div>
 </div>
 </body>
 </html>
