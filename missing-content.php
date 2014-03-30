@@ -125,9 +125,9 @@ function mcn_cache_is_disabled( $atts ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts  The ShortCodes attributes aka options.
+ * @param   array   $atts  The ShortCodes attributes aka options.
  *
- * @return  return       The transient key.
+ * @return  return         The transient key.
  */
 function mcn_get_cached_http_response_transient_key( $atts ) {
 	$atts      = implode( '', $atts );
@@ -150,8 +150,8 @@ function mcn_get_cached_http_response_transient_key( $atts ) {
  *
  * @since   1.0.0
  *
- * @param mixed   $response  The response to cache from the HTTP request.
- * @param array   $atts      The ShortCodes attributes aka options.
+ * @param   mixed   $response  The response to cache from the HTTP request.
+ * @param   array   $atts      The ShortCodes attributes aka options.
  *
  * @return  void
  */
@@ -185,8 +185,8 @@ function mcn_cache_http_response( $response, $atts ) {
  *
  * @since   1.0.0
  *
- * @param mixed   $response  The response to cache from the HTTP request.
- * @param array   $atts      The ShortCodes attributes aka options.
+ * @param   mixed   $response  The response to cache from the HTTP request.
+ * @param   array   $atts      The ShortCodes attributes aka options.
  *
  * @return  void
  */
@@ -217,9 +217,9 @@ function mcn_cache_http_response_multisite( $response, $atts ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts  The ShortCodes attributes aka options.
+ * @param   array   $atts  The ShortCodes attributes aka options.
  *
- * @return  mixed        The cached content if it exists or false if it does not.
+ * @return  mixed          The cached content if it exists or false if it does not.
  */
 function mcn_get_cached_http_response( $atts ) {
 	if ( mcn_cache_is_disabled( $atts ) ) {
@@ -253,9 +253,9 @@ function mcn_get_cached_http_response( $atts ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts  The ShortCodes attributes aka options.
+ * @param   array   $atts  The ShortCodes attributes aka options.
  *
- * @return  mixed        The cached content if it exists or false if it does not.
+ * @return  mixed          The cached content if it exists or false if it does not.
  */
 function mcn_get_cached_http_response_multisite( $atts ) {
 	if ( mcn_cache_is_disabled( $atts ) ) {
@@ -281,9 +281,9 @@ function mcn_get_cached_http_response_multisite( $atts ) {
  *
  * @since   1.0.0
  *
- * @param boolean $html Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param   boolean  $html  Should the text be wrapped in paragraph tags or divided by newlines.
  *
- * @return  string      The fall back ipsum.
+ * @return  string          The fall back ipsum.
  */
 function mcn_fallback_ipsum( $html = true ) {
 	$fallback_ipsum = '';
@@ -318,11 +318,11 @@ function mcn_fallback_ipsum( $html = true ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts             The ShortCodes attributes aka options.
- * @param integer $paragraph_count  The count of paragraphs to retrieve.
- * @param boolean $html             Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param   array    $atts             The ShortCodes attributes aka options.
+ * @param   integer  $paragraph_count  The count of paragraphs to retrieve.
+ * @param   boolean  $html             Should the text be wrapped in paragraph tags or divided by newlines.
  *
- * @return  string                     The lipsum content.
+ * @return  string                      The lipsum content.
  */
 function mcn_get_lipsum( $atts, $paragraph_count = 3, $html = true ) {
 	$cache = mcn_get_cached_http_response( $atts );
@@ -358,11 +358,11 @@ function mcn_get_lipsum( $atts, $paragraph_count = 3, $html = true ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts             The ShortCodes attributes aka options.
- * @param integer $paragraph_count  The count of paragraphs to retrieve.
- * @param boolean $html             Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param   array    $atts             The ShortCodes attributes aka options.
+ * @param   integer  $paragraph_count  The count of paragraphs to retrieve.
+ * @param   boolean  $html             Should the text be wrapped in paragraph tags or divided by newlines.
  *
- * @return  string                     The bacon ipsum content.
+ * @return  string                      The bacon ipsum content.
  */
 function mcn_get_bacon_ipsum( $atts, $paragraph_count = 3, $html = true ) {
 	$cache = mcn_get_cached_http_response( $atts );
@@ -404,11 +404,11 @@ function mcn_get_bacon_ipsum( $atts, $paragraph_count = 3, $html = true ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts             The ShortCodes attributes aka options.
- * @param integer $paragraph_count  The count of paragraphs to retrieve.
- * @param boolean $html             Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param   array    $atts             The ShortCodes attributes aka options.
+ * @param   integer  $paragraph_count  The count of paragraphs to retrieve.
+ * @param   boolean  $html             Should the text be wrapped in paragraph tags or divided by newlines.
  *
- * @return  string                  The bacon ipsum content.
+ * @return  string                     The bacon ipsum content.
  */
 function mcn_get_hipster_ipsum( $atts, $paragraph_count = 3, $html = true ) {
 	$cache = mcn_get_cached_http_response( $atts );
@@ -448,10 +448,10 @@ function mcn_get_hipster_ipsum( $atts, $paragraph_count = 3, $html = true ) {
  *
  * @since   1.0.0
  *
- * @param array   $atts             The ShortCodes attributes aka options.
- * @param integer $paragraph_count  The count of paragraphs to retrieve.
+ * @param   array    $atts             The ShortCodes attributes aka options.
+ * @param   integer  $paragraph_count  The count of paragraphs to retrieve.
  *
- * @return  string                  The Blokk font content.
+ * @return  string                     The Blokk font content.
  */
 function mcn_blokk_font( $atts, $paragraph_count = 3 ) {
 	$lipsum     = mcn_get_lipsum( $atts, $paragraph_count, false );
@@ -475,10 +475,10 @@ function mcn_blokk_font( $atts, $paragraph_count = 3 ) {
  *
  * @since   1.0.0
  *
- * @param integer $width   Image width.
- * @param integer $height  Image height.
+ * @param   integer  $width    Image width.
+ * @param   integer  $height   Image height.
  *
- * @return  string         Missing image HTML.
+ * @return  string             Missing image HTML.
  */
 function mcn_placeholder_image( $width = 150, $height = 150 ) {
 	$image_html = "<img src='http://placehold.it/{$width}x{$height}' class='missing-content' width='{$width}' height='{$height}'>";
@@ -491,18 +491,19 @@ function mcn_placeholder_image( $width = 150, $height = 150 ) {
 /**
  * Retrieves the correct placeholder content.
  *
- * @since   1.0.0
- *
  * <code>$placeholder_content = mcn_get_placeholder_content( $atts );</code>
  *
- * @uses mcn_get_hipster_ipsum()
- * @uses mcn_get_bacon_ipsum()
- * @uses mcn_blokk_font()
- * @uses mcn_placeholder_image()
- * @uses mcn_get_lipsum()
+ * @since   1.0.0
  *
- * @param   array   $atts The ShortCodes attributes aka options.
- * @return  string        The selected ipsum content.
+ * @uses    mcn_get_hipster_ipsum()
+ * @uses    mcn_get_bacon_ipsum()
+ * @uses    mcn_blokk_font()
+ * @uses    mcn_placeholder_image()
+ * @uses    mcn_get_lipsum()
+ *
+ * @param   array   $atts  The ShortCodes attributes aka options.
+ *
+ * @return  string         The selected ipsum content.
  */
 function mcn_get_placeholder_content( $atts ) {
 	extract( $atts );
@@ -554,15 +555,16 @@ add_action( 'wp_enqueue_scripts', 'mcn_enqueue_scripts_and_styles' );
 
 
 /**
- * Handles setting/sorting/filtering of all of the possible options
+ * Handles setting/sorting/filtering of all of the possible options.
+ * See $defaults for all possible options/ShortCode attributes.
  *
  * <code>$atts = mcn_set_options( $atts );</code>
  *
  * @since   1.1.0
  *
- * @param array   $atts  The ShortCodes attributes aka options.
+ * @param   array   $atts  The ShortCodes attributes aka options.
  *
- * @return  array         The sorted/filtered options.
+ * @return  array          The sorted/filtered options.
  */
 function mcn_set_options( $atts ) {
 	$defaults = array(
@@ -628,10 +630,13 @@ function mcn_set_options( $atts ) {
  *
  * @since   1.1.0
  *
- * @param   array    $atts  The ShortCodes attributes aka options.
- * @param   boolean  $echo  Optional, if it should be output to the screen default true.
+ * @uses    mcn_set_options()
+ * @uses    mcn_get_placeholder_content()
  *
- * @return  string          The selected placeholder content and HTML.
+ * @param   array     $atts   The ShortCodes attributes aka options.
+ * @param   boolean   $echo   Optional, if it should be output to the screen default true.
+ *
+ * @return  string            The selected placeholder content and HTML.
  */
 function mcn_missing_content( $atts, $echo = true ) {
 	// Here we go...
@@ -660,13 +665,13 @@ function mcn_missing_content( $atts, $echo = true ) {
  *
  * <code>[missing-content content_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code>
  *
- * @uses    mcn_get_placeholder_content()
+ * @uses    mcn_missing_content()
  *
  * @since   1.0.0
  *
- * @param array   $atts  The ShortCodes attributes aka options.
+ * @param   array   $atts  The ShortCodes attributes aka options.
  *
- * @return  string       The missing content HTML.
+ * @return  string         The missing content HTML.
  */
 function mcn_missing_content_shortcode( $atts ) {
 	$html = mcn_missing_content( $atts, false );
