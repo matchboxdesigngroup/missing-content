@@ -39,6 +39,11 @@
 <p>Missing content offers multiple different content choices, if you would like to request something else please post it to the support forums.</p>
 
 <h3>
+<a name="how-do-i-use-it" class="anchor" href="#how-do-i-use-it"><span class="octicon octicon-link"></span></a>How do I use it?</h3>
+
+<p>Either with the shortcode <code>[missing-content]</code> in the post editor or with the function <code>mcn_missing_content( $atts, $echo = true )</code> in your template.</p>
+
+<h3>
 <a name="content-choices" class="anchor" href="#content-choices"><span class="octicon octicon-link"></span></a>Content Choices</h3>
 
 <ul>
@@ -53,41 +58,33 @@
 <li>Image from <a href="http://placehold.it">http://placehold.it</a>
 </li>
 </ul><h3>
-<a name="shortcode-attributes" class="anchor" href="#shortcode-attributes"><span class="octicon octicon-link"></span></a>ShortCode Attributes</h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
 
 <ul>
-<li>content_type
-
-<ul>
-<li>default: lipsum</li>
-<li>options: lipsum|hipster|bacon|blokk|image</li>
-</ul>
-</li>
-<li>paragraph_count
-
-<ul>
-<li>default: 3</li>
-</ul>
-</li>
-<li>width
-
-<ul>
-<li>default: 150</li>
-</ul>
-</li>
-<li>height
-
-<ul>
-<li>default: 150</li>
-</ul>
-</li>
-<li>cache_duration
-
-<ul>
-<li>default: 3 hours aka 10800 aka (3 * 60 * 60)</li>
-<li>options: {time in seconds}|always|never</li>
-</ul>
-</li>
+<li>
+<strong>content_type="lipsum"</strong> options: lipsum|hipster|bacon|blokk|image</li>
+<li>
+<strong>paragraph_count="3"</strong> Ignored if random="true"</li>
+<li>
+<strong>min_paragraph_count="1"</strong> Requires random="true"</li>
+<li>
+<strong>max_paragraph_count="5"</strong> Requires random="true"</li>
+<li>
+<strong>width="150"</strong> Ignored if random="true"</li>
+<li>
+<strong>min_width="150"</strong> Requires random="true" and content_type="image"</li>
+<li>
+<strong>max_width="1200"</strong> Requires random="true" and content_type="image"</li>
+<li>
+<strong>height="150"</strong> Ignored if random="true"</li>
+<li>
+<strong>min_height="150"</strong> Requires random="true" and content_type="image"</li>
+<li>
+<strong>max_height="1200"</strong> Requires random="true" and content_type="image"</li>
+<li>
+<strong>random="false"</strong> options: (shortcode: "true"|"false") (function: <code>true</code>|<code>false</code>)</li>
+<li>
+<strong>cache_duration="10800"</strong> 3 hours (3 * 60 * 60) options: {time in seconds}|always|never</li>
 </ul><h3>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
 
@@ -108,6 +105,10 @@
 <strong><code>[missing-content content_type="blokk"]</code></strong> 3 paragraphs of Blokk font using <a href="http://blokkfont.com/">http://blokkfont.com/</a> updated every 3 hours.</li>
 <li>
 <strong><code>[missing-content content_type="image" width="500" height="500"]</code></strong> 500px x 500px image from <a href="http://placehold.it">http://placehold.it</a> NOTE: no cache control.</li>
+<li>
+<strong>[missing-content content_type="image" random="true" min_width="150" max_width="500" min_height="150" max_height="300"]</strong> Random sized image 150px - 500px wide and 150px - 300px high.</li>
+<li>
+<strong>[missing-content random="true" min_paragraph_count="1" max_paragraph_count="5"]</strong> 1-5 paragraphs from a random content source.</li>
 </ul><p>More examples can be found <a href="http://danholloran.me/missing-content/">here</a></p>
       </section>
       <footer>
