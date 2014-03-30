@@ -2,7 +2,7 @@
 /**
  *  Missing Content
  *
- * @version      1.0.0
+ * @version      1.1.0
  * @package      WordPress
  * @subpackage   MCN
  *
@@ -18,7 +18,7 @@ Description:  Adds a missing content notice for when there is missing content.
 Plugin URI:   http://matchboxdesigngroup.github.io/missing-content
 Author:       Matchbox Design Group
 Author URI:   http://danholloran.me
-Version:      1.0.0
+Version:      1.1.0
 License:      GPL2
 */
 
@@ -51,7 +51,7 @@ if ( ! defined( 'MCN_VERSION' ) ) {
 	 *
 	 * @var  string
 	 */
-	define( 'MCN_VERSION', '1.0.0' );
+	define( 'MCN_VERSION', '1.1.0' );
 } // if()
 
 if ( ! defined( 'MCN_URL' ) ) {
@@ -81,32 +81,32 @@ if ( ! defined( 'MCN_PATH' ) ) {
  * Checks if the cache is disabled.
  *
  * <code>
- * if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+ * if ( mcn_cache_is_disabled( $atts ) ) {
  * 	return;
  * } // if()
  * </code>
  *
- * @param   array    $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ * @param   array    $atts  The ShortCodes attributes aka options.
  *
- * @return  boolean                   If the cache should be disabled.
+ * @return  boolean         If the cache should be disabled.
  */
-function mcn_cache_is_disabled( $shortcode_atts ) {
-	if ( gettype( $shortcode_atts['cache_duration'] ) != 'integer' ) {
+function mcn_cache_is_disabled( $atts ) {
+	if ( gettype( $atts['cache_duration'] ) != 'integer' ) {
 		return true;
 	} // if()
 
 	// Never cache
-	if ( $shortcode_atts['cache_duration'] == 0 ) {
+	if ( $atts['cache_duration'] == 0 ) {
 		return true;
 	} // if()
 
 	// We have a problem!!
-	if ( is_null( $shortcode_atts['cache_duration'] ) ) {
+	if ( is_null( $atts['cache_duration'] ) ) {
 		return true;
 	} // if()
 
 	// We have stop the cache for some other reason...should have used 0
-	if ( ! $shortcode_atts['cache_duration'] ) {
+	if ( ! $atts['cache_duration'] ) {
 		return true;
 	} // if()
 
@@ -119,19 +119,19 @@ function mcn_cache_is_disabled( $shortcode_atts ) {
  * Retrieves the transient key for the HTTP response cache.
  * Uses MD5 to create a transient key from the ShortCode attributes.
  *
- * <code>$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );</code>
+ * <code>$transient = mcn_get_cached_http_response_transient_key( $atts );</code>
  *
  * @see     https://codex.wordpress.org/Transients_API
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ * @param array   $atts  The ShortCodes attributes aka options.
  *
- * @return  return                    The transient key.
+ * @return  return       The transient key.
  */
-function mcn_get_cached_http_response_transient_key( $shortcode_atts ) {
-	$shortcode_atts = implode( '', $shortcode_atts );
-	$transient      = md5( $shortcode_atts );
+function mcn_get_cached_http_response_transient_key( $atts ) {
+	$atts      = implode( '', $atts );
+	$transient = md5( $atts );
 
 	return "_{$transient}";
 } // mcn_get_cached_http_response_transient_key()
@@ -142,7 +142,7 @@ function mcn_get_cached_http_response_transient_key( $shortcode_atts ) {
  * Caches the HTTP response content.
  * Will use mcn_cache_http_response_multisite() if it is a Multisite installation.
  *
- * <code>mcn_cache_http_response( $response, $shortcode_atts );</code>
+ * <code>mcn_cache_http_response( $response, $atts );</code>
  *
  * @see     https://codex.wordpress.org/Function_Reference/set_transient
  *
@@ -150,24 +150,24 @@ function mcn_get_cached_http_response_transient_key( $shortcode_atts ) {
  *
  * @since   1.0.0
  *
- * @param mixed   $response       The response to cache from the HTTP request.
- * @param array   $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ * @param mixed   $response  The response to cache from the HTTP request.
+ * @param array   $atts      The ShortCodes attributes aka options.
  *
  * @return  void
  */
-function mcn_cache_http_response( $response, $shortcode_atts ) {
-	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+function mcn_cache_http_response( $response, $atts ) {
+	if ( mcn_cache_is_disabled( $atts ) ) {
 		return;
 	} // if()
 
 	if ( is_multisite() ) {
-		return mcn_cache_http_response_multisite( $reponse, $shortcode_atts );
+		return mcn_cache_http_response_multisite( $reponse, $atts );
 	} // if()
 
-	$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );
+	$transient = mcn_get_cached_http_response_transient_key( $atts );
 
-	extract( $shortcode_atts );
-	set_transient( $transient, $response, $shortcode_atts['cache_duration'] );
+	extract( $atts );
+	set_transient( $transient, $response, $atts['cache_duration'] );
 
 	return;
 } // mcn_cache_http_response()
@@ -177,7 +177,7 @@ function mcn_cache_http_response( $response, $shortcode_atts ) {
 /**
  * Caches the HTTP response content, used on WordPress MultiSite installs.
  *
- * <code>mcn_cache_http_response_multisite( $response, $shortcode_atts );</code>
+ * <code>mcn_cache_http_response_multisite( $response, $atts );</code>
  *
  * @see     https://codex.wordpress.org/Function_Reference/set_site_transient
  *
@@ -185,20 +185,20 @@ function mcn_cache_http_response( $response, $shortcode_atts ) {
  *
  * @since   1.0.0
  *
- * @param mixed   $response       The response to cache from the HTTP request.
- * @param array   $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ * @param mixed   $response  The response to cache from the HTTP request.
+ * @param array   $atts      The ShortCodes attributes aka options.
  *
  * @return  void
  */
-function mcn_cache_http_response_multisite( $response, $shortcode_atts ) {
-	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+function mcn_cache_http_response_multisite( $response, $atts ) {
+	if ( mcn_cache_is_disabled( $atts ) ) {
 		return;
 	} // if()
 
-	$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );
+	$transient = mcn_get_cached_http_response_transient_key( $atts );
 
-	extract( $shortcode_atts );
-	set_site_transient( $transient, $response, $shortcode_atts['cache_duration'] );
+	extract( $atts );
+	set_site_transient( $transient, $response, $atts['cache_duration'] );
 
 	return;
 } // mcn_cache_http_response_multisite()
@@ -209,7 +209,7 @@ function mcn_cache_http_response_multisite( $response, $shortcode_atts ) {
  * Retrieves the cached HTTP response if it exists.
  * Will use mcn_get_cached_http_response_multisite() if it is a Multisite installation.
  *
- * <code>$cache = mcn_get_cached_http_response( $shortcode_atts );</code>
+ * <code>$cache = mcn_get_cached_http_response( $atts );</code>
  *
  * @see     https://codex.wordpress.org/Function_Reference/get_transient
  *
@@ -217,20 +217,20 @@ function mcn_cache_http_response_multisite( $response, $shortcode_atts ) {
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ * @param array   $atts  The ShortCodes attributes aka options.
  *
- * @return  mixed                  The cached content if it exists or false if it does not.
+ * @return  mixed        The cached content if it exists or false if it does not.
  */
-function mcn_get_cached_http_response( $shortcode_atts ) {
-	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+function mcn_get_cached_http_response( $atts ) {
+	if ( mcn_cache_is_disabled( $atts ) ) {
 		return false;
 	} // if()
 
 	if ( is_multisite() ) {
-		return mcn_get_cached_http_response_multisite( $shortcode_atts );
+		return mcn_get_cached_http_response_multisite( $atts );
 	} // if()
 
-	$transient     = mcn_get_cached_http_response_transient_key( $shortcode_atts );
+	$transient     = mcn_get_cached_http_response_transient_key( $atts );
 	$get_transient = get_transient( $transient );
 
 	if ( $get_transient !== false ) {
@@ -245,7 +245,7 @@ function mcn_get_cached_http_response( $shortcode_atts ) {
 /**
  * Retrieves the cached HTTP response if it exists, used on WordPress MultiSite installs.
  *
- * <code>$cache = mcn_get_cached_http_response_multisite( $shortcode_atts );</code>
+ * <code>$cache = mcn_get_cached_http_response_multisite( $atts );</code>
  *
  * @see     https://codex.wordpress.org/Function_Reference/get_site_transient
  *
@@ -253,16 +253,16 @@ function mcn_get_cached_http_response( $shortcode_atts ) {
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts The ShortCodes attributes aka ShortCode options.
+ * @param array   $atts  The ShortCodes attributes aka options.
  *
- * @return  mixed                    The cached content if it exists or false if it does not.
+ * @return  mixed        The cached content if it exists or false if it does not.
  */
-function mcn_get_cached_http_response_multisite( $shortcode_atts ) {
-	if ( mcn_cache_is_disabled( $shortcode_atts ) ) {
+function mcn_get_cached_http_response_multisite( $atts ) {
+	if ( mcn_cache_is_disabled( $atts ) ) {
 		return false;
 	} // if()
 
-	$transient = mcn_get_cached_http_response_transient_key( $shortcode_atts );
+	$transient = mcn_get_cached_http_response_transient_key( $atts );
 
 	$get_site_transient = get_site_transient( $transient );
 	if ( $get_site_transient !== false ) {
@@ -283,7 +283,7 @@ function mcn_get_cached_http_response_multisite( $shortcode_atts ) {
  *
  * @param boolean $html Should the text be wrapped in paragraph tags or divided by newlines.
  *
- * @return  string          The fall back ipsum.
+ * @return  string      The fall back ipsum.
  */
 function mcn_fallback_ipsum( $html = true ) {
 	$fallback_ipsum = '';
@@ -309,7 +309,7 @@ function mcn_fallback_ipsum( $html = true ) {
 /**
  * Retrieve Loreum Ipsum (API Response:HTML/Plain Text)
  *
- * <code>$content = mcn_get_lipsum( $shortcode_atts, $paragraph_count );</code>
+ * <code>$content = mcn_get_lipsum( $atts, $paragraph_count );</code>
  *
  * @see     http://loripsum.net/
  *
@@ -318,14 +318,14 @@ function mcn_fallback_ipsum( $html = true ) {
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts  The ShortCodes attributes aka ShortCode options.
- * @param integer $paragraph_count The count of paragraphs to retrieve.
- * @param boolean $html            Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param array   $atts             The ShortCodes attributes aka options.
+ * @param integer $paragraph_count  The count of paragraphs to retrieve.
+ * @param boolean $html             Should the text be wrapped in paragraph tags or divided by newlines.
  *
  * @return  string                     The lipsum content.
  */
-function mcn_get_lipsum( $shortcode_atts, $paragraph_count = 3, $html = true ) {
-	$cache = mcn_get_cached_http_response( $shortcode_atts );
+function mcn_get_lipsum( $atts, $paragraph_count = 3, $html = true ) {
+	$cache = mcn_get_cached_http_response( $atts );
 	if ( $cache !== false ) {
 		return $cache;
 	} // if()
@@ -339,7 +339,7 @@ function mcn_get_lipsum( $shortcode_atts, $paragraph_count = 3, $html = true ) {
 	if ( is_wp_error( $lipsum ) ) {
 		return '';
 	} else {
-		mcn_cache_http_response( $lipsum['body'], $shortcode_atts );
+		mcn_cache_http_response( $lipsum['body'], $atts );
 		return $lipsum['body'];
 	} // if/else()
 } // mcn_get_lipsum()
@@ -349,7 +349,7 @@ function mcn_get_lipsum( $shortcode_atts, $paragraph_count = 3, $html = true ) {
 /**
  * Retrieves Bacon Ipsum (API Response:JSON).
  *
- * <code>$content = mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count );</code>
+ * <code>$content = mcn_get_bacon_ipsum( $atts, $paragraph_count );</code>
  *
  * @see     http://baconipsum.com/api/
  *
@@ -358,14 +358,14 @@ function mcn_get_lipsum( $shortcode_atts, $paragraph_count = 3, $html = true ) {
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts  The ShortCodes attributes aka ShortCode options.
- * @param integer $paragraph_count The count of paragraphs to retrieve.
- * @param boolean $html            Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param array   $atts             The ShortCodes attributes aka options.
+ * @param integer $paragraph_count  The count of paragraphs to retrieve.
+ * @param boolean $html             Should the text be wrapped in paragraph tags or divided by newlines.
  *
  * @return  string                     The bacon ipsum content.
  */
-function mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count = 3, $html = true ) {
-	$cache = mcn_get_cached_http_response( $shortcode_atts );
+function mcn_get_bacon_ipsum( $atts, $paragraph_count = 3, $html = true ) {
+	$cache = mcn_get_cached_http_response( $atts );
 	if ( $cache !== false ) {
 		return $cache;
 	} // if()
@@ -384,7 +384,7 @@ function mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count = 3, $html = tru
 		$bacon_ipsum = implode( "\n\n", $bacon_ipsum );
 		$bacon_ipsum = ( $html ) ? wpautop( $bacon_ipsum, false ) : $bacon_ipsum;
 
-		mcn_cache_http_response( $bacon_ipsum, $shortcode_atts );
+		mcn_cache_http_response( $bacon_ipsum, $atts );
 
 		return $bacon_ipsum;
 	} // if/else()
@@ -395,7 +395,7 @@ function mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count = 3, $html = tru
 /**
  * Retrieves Hipster Ipsum (API Response:JSON).
  *
- * <code>$content = mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count );</code>
+ * <code>$content = mcn_get_hipster_ipsum( $atts, $paragraph_count );</code>
  *
  * @see     http://hipsterjesus.com/
  *
@@ -404,14 +404,14 @@ function mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count = 3, $html = tru
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts  The ShortCodes attributes aka ShortCode options.
- * @param integer $paragraph_count The count of paragraphs to retrieve.
- * @param boolean $html            Should the text be wrapped in paragraph tags or divided by newlines.
+ * @param array   $atts             The ShortCodes attributes aka options.
+ * @param integer $paragraph_count  The count of paragraphs to retrieve.
+ * @param boolean $html             Should the text be wrapped in paragraph tags or divided by newlines.
  *
- * @return  string                     The bacon ipsum content.
+ * @return  string                  The bacon ipsum content.
  */
-function mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count = 3, $html = true ) {
-	$cache = mcn_get_cached_http_response( $shortcode_atts );
+function mcn_get_hipster_ipsum( $atts, $paragraph_count = 3, $html = true ) {
+	$cache = mcn_get_cached_http_response( $atts );
 	if ( $cache !== false ) {
 		return $cache;
 	} // if()
@@ -429,7 +429,7 @@ function mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count = 3, $html = t
 		$hipster_ipsum = json_decode( $hipster_ipsum['body'] );
 		$hipster_ipsum = $hipster_ipsum->text;
 
-		mcn_cache_http_response( $hipster_ipsum, $shortcode_atts );
+		mcn_cache_http_response( $hipster_ipsum, $atts );
 
 		return $hipster_ipsum;
 	} // if/else()
@@ -440,7 +440,7 @@ function mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count = 3, $html = t
 /**
  * Blokk font placeholder font.
  *
- * <code>$content = mcn_blokk_font( $shortcode_atts, $paragraph_count );</code>
+ * <code>$content = mcn_blokk_font( $atts, $paragraph_count );</code>
  *
  * @see     http://blokkfont.com/
  *
@@ -448,13 +448,13 @@ function mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count = 3, $html = t
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts  The ShortCodes attributes aka ShortCode options.
- * @param integer $paragraph_count The count of paragraphs to retrieve.
+ * @param array   $atts             The ShortCodes attributes aka options.
+ * @param integer $paragraph_count  The count of paragraphs to retrieve.
  *
- * @return  string                     The Blokk font content.
+ * @return  string                  The Blokk font content.
  */
-function mcn_blokk_font( $shortcode_atts, $paragraph_count = 3 ) {
-	$lipsum     = mcn_get_lipsum( $shortcode_atts, $paragraph_count, false );
+function mcn_blokk_font( $atts, $paragraph_count = 3 ) {
+	$lipsum     = mcn_get_lipsum( $atts, $paragraph_count, false );
 	$blokk_font = '';
 
 	for ( $i = 0; $i < $paragraph_count; $i++ ) {
@@ -475,10 +475,10 @@ function mcn_blokk_font( $shortcode_atts, $paragraph_count = 3 ) {
  *
  * @since   1.0.0
  *
- * @param integer $width  Image width.
- * @param integer $height Image height.
+ * @param integer $width   Image width.
+ * @param integer $height  Image height.
  *
- * @return  string            Missing image HTML.
+ * @return  string         Missing image HTML.
  */
 function mcn_placeholder_image( $width = 150, $height = 150 ) {
 	$image_html = "<img src='http://placehold.it/{$width}x{$height}' class='missing-content' width='{$width}' height='{$height}'>";
@@ -493,8 +493,6 @@ function mcn_placeholder_image( $width = 150, $height = 150 ) {
  *
  * @since   1.0.0
  *
- * @param array   $shortcode_atts The ShortCodes attributes aka ShortCode options.
- *
  * <code>$placeholder_content = mcn_get_placeholder_content( $atts );</code>
  *
  * @uses mcn_get_hipster_ipsum()
@@ -503,23 +501,24 @@ function mcn_placeholder_image( $width = 150, $height = 150 ) {
  * @uses mcn_placeholder_image()
  * @uses mcn_get_lipsum()
  *
- * @return  string                   The selected ipsum content.
+ * @param   array   $atts The ShortCodes attributes aka options.
+ * @return  string        The selected ipsum content.
  */
-function mcn_get_placeholder_content( $shortcode_atts ) {
-	extract( $shortcode_atts );
+function mcn_get_placeholder_content( $atts ) {
+	extract( $atts );
 
 	$content = '';
 	switch ( $content_type ) {
 		case 'hipster':
-			$content = mcn_get_hipster_ipsum( $shortcode_atts, $paragraph_count );
+			$content = mcn_get_hipster_ipsum( $atts, $paragraph_count );
 			break;
 
 		case 'bacon':
-			$content = mcn_get_bacon_ipsum( $shortcode_atts, $paragraph_count );
+			$content = mcn_get_bacon_ipsum( $atts, $paragraph_count );
 			break;
 
 		case 'blokk':
-			$content = mcn_blokk_font( $shortcode_atts, $paragraph_count );
+			$content = mcn_blokk_font( $atts, $paragraph_count );
 			break;
 
 		case 'image':
@@ -527,7 +526,7 @@ function mcn_get_placeholder_content( $shortcode_atts ) {
 			break;
 
 		default:
-			$content = mcn_get_lipsum( $shortcode_atts, $paragraph_count );
+			$content = mcn_get_lipsum( $atts, $paragraph_count );
 			break;
 	} // switch()
 
@@ -555,21 +554,17 @@ add_action( 'wp_enqueue_scripts', 'mcn_enqueue_scripts_and_styles' );
 
 
 /**
- * Adds a missing content ShortCode.
+ * Handles setting/sorting/filtering of all of the possible options
  *
- * <code>[missing-content content_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code>
+ * <code>$atts = mcn_set_options( $atts );</code>
  *
- * @uses    mcn_get_placeholder_content()
+ * @since   1.1.0
  *
- * @todo    Add a random option for paragraph_count and lcontent_type
+ * @param array   $atts  The ShortCodes attributes aka options.
  *
- * @since   1.0.0
- *
- * @param array   $atts The ShortCodes attributes aka ShortCode options.
- *
- * @return  string          The missing content HTML.
+ * @return  array         The sorted/filtered options.
  */
-function mcn_missing_content_shortcode( $atts ) {
+function mcn_set_options( $atts ) {
 	$defaults = array(
 		'content_type'        => 'lipsum', // lipsum|hipster|bacon|blokk|image
 		'paragraph_count'     => 3,
@@ -621,7 +616,27 @@ function mcn_missing_content_shortcode( $atts ) {
 	// Set cache to be an integer
 	$atts['cache_duration'] = intval( $cache_duration );
 
+	return $atts;
+} // mcn_set_options()
+
+
+
+/**
+ * Selects the type of content and creates the final HTML.
+ *
+ * <code>$html = mcn_missing_content( $atts, false );</code>
+ *
+ * @since   1.1.0
+ *
+ * @param   array    $atts  The ShortCodes attributes aka options.
+ * @param   boolean  $echo  Optional, if it should be output to the screen default true.
+ *
+ * @return  string          The selected placeholder content and HTML.
+ */
+function mcn_missing_content( $atts, $echo = true ) {
 	// Here we go...
+	$atts = mcn_set_options( $atts );
+
 	if ( $atts['content_type'] == 'image' ) {
 		return wp_kses( mcn_get_placeholder_content( $atts ), 'post' );
 	} // if()
@@ -630,6 +645,32 @@ function mcn_missing_content_shortcode( $atts ) {
 	$html .= '<div class="missing-content-notice-shortcode">';
 	$html .= wp_kses( mcn_get_placeholder_content( $atts ), 'post' );
 	$html .= '</div>';
+
+	if ( $echo ) {
+		echo wp_kses( $html, 'post' );
+	} // if()
+
+	return $html;
+} // mcn_missing_content()
+
+
+
+/**
+ * Adds the missing content ShortCode.
+ *
+ * <code>[missing-content content_type="lipsum|hipster|bacon|blokk|image" paragraph_count="3" width="150" height="150" cache_duration="10800"]</code>
+ *
+ * @uses    mcn_get_placeholder_content()
+ *
+ * @since   1.0.0
+ *
+ * @param array   $atts  The ShortCodes attributes aka options.
+ *
+ * @return  string       The missing content HTML.
+ */
+function mcn_missing_content_shortcode( $atts ) {
+	$html = mcn_missing_content( $atts, false );
+
 	return $html;
 } // mcn_missing_content_shortcode()
 add_shortcode( 'missing-content', 'mcn_missing_content_shortcode' );
