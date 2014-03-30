@@ -550,7 +550,7 @@ function mcn_get_placeholder_content( $shortcode_atts ) {
 function mcn_enqueue_scripts_and_styles() {
 	wp_enqueue_style( 'mcn_main_css', MCN_URL . '/assets/css/mcn-plugin.min.css', array(), MCN_VERSION, 'screen' );
 } // mcn_enqueue_scripts_and_styles()
-add_action( 'wp_head', 'mcn_enqueue_scripts_and_styles' );
+add_action( 'wp_enqueue_scripts', 'mcn_enqueue_scripts_and_styles' );
 
 
 
@@ -571,32 +571,48 @@ add_action( 'wp_head', 'mcn_enqueue_scripts_and_styles' );
  */
 function mcn_missing_content_shortcode( $atts ) {
 	$defaults = array(
-		'content_type'    => 'lipsum', // lipsum|hipster|bacon|blokk|image
-		'paragraph_count' => 3,
-		'width'           => 150,
-		'height'          => 150,
-		// 'random'          => false,
-		'cache_duration'  => ( 3 * HOUR_IN_SECONDS ), // {time in seconds}|always|never
+		'content_type'        => 'lipsum', // lipsum|hipster|bacon|blokk|image
+		'paragraph_count'     => 3,
+		'min_paragraph_count' => 1,
+		'max_paragraph_count' => 5,
+		'width'               => 150,
+		'min_width'           => 150,
+		'max_width'           => 1200,
+		'height'              => 150,
+		'min_height'          => 150,
+		'max_height'          => 1200,
+		'random'              => false,
+		'cache_duration'      => ( 3 * HOUR_IN_SECONDS ), // {time in seconds}|always|never
 	);
 	$atts = shortcode_atts( $defaults, $atts );
 
 	// Should we randomize it?
-	// $atts['random'] = ( $atts['random'] == 'true' ) ? true : false;
-	// if ( $atts['random'] ) {
-	// 	$atts['cache_duration']  = 'never';
-	// 	$atts['paragraph_count'] = rand( 1, 5 ); // We may need to tweak the max...
-	// 	$content_types           = array( 'lipsum', 'hipster', 'bacon', 'blokk', 'image' );
-	// 	$atts['content_type']    = rand( 1, 5 );
-	// } // if()
+	$atts['random'] = ( $atts['random'] == 'true' ) ? true : false;
+	if ( $atts['random'] ) {
+		// If we cache it then it cant be random.
+		$atts['cache_duration'] = 'never';
 
+		if ( $atts['content_type'] == 'image' ) {
+			// Placeholder image
+			$atts['width']  = rand( $atts['min_width'], $atts['max_width'] );
+			$atts['height'] = rand( $atts['min_height'], $atts['max_height'] );
+		} else {
+			// Placeholder content
+			$atts['paragraph_count'] = rand( $atts['min_paragraph_count'], $atts['max_paragraph_count'] );
+			$content_types           = array( 'lipsum', 'hipster', 'bacon', 'blokk' );
+			$content_type_key        = array_rand( $content_types );
+			$atts['content_type']    = $content_types[$content_type_key];
+		} // if/else()
+	} // if()
+
+	// Setup the cache duration.
 	$cache_duration = $atts['cache_duration'];
 
 	// Allows for the response to "always" be cached, if missing content
 	// has not been added in a year you have a larger problem than the cache...
 	$cache_duration = ( $cache_duration == 'always' ) ? YEAR_IN_SECONDS : $cache_duration;
 
-	// Allows for the response to "never" be cached, since it is a staging/development
-	// that should be okay.
+	// Allows for the response to "never" be cached, since it is a staging/development that should be okay.
 	$cache_duration = ( $cache_duration == 'never' ) ? 0 : $cache_duration;
 
 	// Only allow numbers for caching
@@ -605,9 +621,8 @@ function mcn_missing_content_shortcode( $atts ) {
 	// Set cache to be an integer
 	$atts['cache_duration'] = intval( $cache_duration );
 
-	extract( $atts );
-
-	if ( $content_type == 'image' ) {
+	// Here we go...
+	if ( $atts['content_type'] == 'image' ) {
 		return wp_kses( mcn_get_placeholder_content( $atts ), 'post' );
 	} // if()
 
