@@ -584,7 +584,7 @@ function mcn_set_options( $atts ) {
 	$atts = shortcode_atts( $defaults, $atts );
 
 	// Should we randomize it?
-	$atts['random'] = ( $atts['random'] == 'true' ) ? true : false;
+	$atts['random'] = ( $atts['random'] == 'true' or $atts['random'] === true ) ? true : false;
 	if ( $atts['random'] ) {
 		// If we cache it then it cant be random.
 		$atts['cache_duration'] = 'never';
